@@ -1,0 +1,17 @@
+const pathname = {
+  HOME: '/home',
+  SIGN_UP: '/sign-up',
+  LOGIN: '/login',
+  ACCOUNT: '/account',
+  COMMENT_CHALLENGE: '/challenge/comment',
+  CREATE_CHALLENGE: '/challenge/create',
+  DETAIL_CAHLLENGE: '/challenge/detail',
+  WORK_THROUGH: '/',
+  BADGE: '/badge',
+  SETTING: '/setting',
+  PROFILE: '/profile',
+  WITHDRAWAL: '/withdrawal',
+  FORGET_PASSWORD: '/forget-password',
+  RESET_PASSWORD: '/reset_password',
+  NOTIFICATION: '/notification',
+};

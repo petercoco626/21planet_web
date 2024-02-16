@@ -16,6 +16,7 @@ const config: Config = {
         'white-0.3': 'rgba(255, 255, 255, 0.30)',
         'white-0.15': 'rgba(255, 255, 255, 0.15)',
         'modal-background': 'rgba(14, 13, 26, 0.8)',
+        background: '#0E0D1A',
 
         'gray-50': '#F5F2FF',
         'gray-100': '#D4CFE5',

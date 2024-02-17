@@ -3,7 +3,9 @@
 import { Button } from '@/components/base/button';
 import { GradientButton } from '@/components/base/gradient-button';
 import { Input } from '@/components/base/input';
+import { Toast } from '@/components/base/toast';
 import { Toggle } from '@/components/base/toggle';
+import { useToggle } from '@/hooks/use-toggle';
 import { FormProvider, useForm } from 'react-hook-form';
 
 export default function DesignPage() {
@@ -15,6 +17,8 @@ export default function DesignPage() {
       foo: '',
     },
   });
+
+  const { toggle, handleToggleOff } = useToggle({ initialToggleState: true });
 
   return (
     <div className="space-y-10">
@@ -60,6 +64,9 @@ export default function DesignPage() {
       </div>
       <div>
         <Toggle />
+      </div>
+      <div>
+        <Toast message="test" isToastOn={toggle} onToastOff={handleToggleOff} />
       </div>
     </div>
   );

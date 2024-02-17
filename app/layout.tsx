@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +13,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background">{children}</body>
+      <body>
+        <div className="w-screen h-screen bg-background max-w-[500px] mx-auto">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

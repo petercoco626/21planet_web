@@ -1,0 +1,32 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { GradientButton } from '../base/gradient-button';
+import { Button } from '../base/button';
+
+export function Start21Planet() {
+  const route = useRouter();
+
+  const handle21PlanetStartButtonClick = () => {
+    route.push(pathname.SIGN_UP);
+  };
+
+  return (
+    <>
+      <GradientButton
+        variant="gradient"
+        size="large"
+        className="w-full mt-9"
+        onClick={handle21PlanetStartButtonClick}
+      >
+        시작하기
+      </GradientButton>
+      <div className="flex items-center gap-2 justify-center">
+        <span className="text-s_light text-white-0.5">이미 계정이 있나요?</span>
+        <Button variant="text" size="middle">
+          로그인
+        </Button>
+      </div>
+    </>
+  );
+}

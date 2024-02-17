@@ -11,7 +11,7 @@ export function CreateChallengeHeader() {
   };
 
   return (
-    <div className="px-6 w-full h-14 py-2 box-border flex justify-end">
+    <header className="px-6 w-full h-14 py-2 box-border flex justify-end">
       <button
         type="button"
         onClick={handleXButtonClick}
@@ -19,6 +19,6 @@ export function CreateChallengeHeader() {
       >
         <IcX />
       </button>
-    </div>
+    </header>
   );
 }

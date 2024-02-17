@@ -32,9 +32,7 @@ export function ChallengeDateCard({
   };
 
   const handleRouteChekcedDateDetail = (challengeCheckId: string) => {
-    route.push(
-      pathname.COMMENT_CHALLENGE + `/${challengeId}` + `/${challengeCheckId}`
-    );
+    route.push(pathname.COMMENT_CHALLENGE + `/${challengeId}`);
   };
 
   if (checkedChallenge === null && !canCheckToday) {

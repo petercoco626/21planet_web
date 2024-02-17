@@ -276,7 +276,16 @@ const config: Config = {
         suit: 'SUIT-Medium',
       },
     },
+    keyframes: {
+      fadeIn: {
+        from: { opacity: '0' },
+        to: { opacity: '1' },
+      },
+    },
+    animation: {
+      fadeIn: 'fadeIn .3s ease-in-out',
+    },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')({ nocompatible: true })],
 };
 export default config;

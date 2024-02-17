@@ -55,7 +55,7 @@ export function IssueTempPasswordForm() {
   return (
     <FormProvider {...IssueTempPasswordFormMethods}>
       <form
-        className="w-full h-[calc(100%-56px])"
+        className="w-full h-[calc(100%-56px)]"
         autoComplete="off"
         onSubmit={handleSubmit((IssueTempPasswordFormValue) => {
           handleIssueTempPasswordButtonClick(IssueTempPasswordFormValue);

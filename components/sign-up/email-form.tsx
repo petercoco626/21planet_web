@@ -5,7 +5,6 @@ import { Input } from '../base/input';
 import { Button } from '../base/button';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
-import { useEffect } from 'react';
 
 interface EmailFormValue {
   email: string;

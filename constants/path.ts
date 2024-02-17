@@ -1,4 +1,4 @@
-const pathname = {
+export const pathname = {
   WORK_THROUGH: '/',
   CHALLENGE: '/challenge',
   SIGN_UP: '/sign-up',

@@ -17,7 +17,6 @@ type InputProps<T> = {
   type?: InputType;
   id?: string;
   multiple?: boolean;
-  errorMessage?: string;
 } & RegisterOptions;
 
 const textInputWrapperDefaultStyle =
@@ -36,16 +35,8 @@ export function Input<T>(props: InputProps<T>) {
     accept,
     id,
     multiple,
-    errorMessage,
     ...registerOptions
   } = props;
-
-  const errorStyle = {
-    label: errorMessage ? 'text-red-1' : 'text-white-0.5',
-    textInputBorder: errorMessage
-      ? 'border-red-1'
-      : 'border-gray-800 focus:border-gary-700',
-  };
 
   const { register, formState, getFieldState } = useFormContext();
 
@@ -55,11 +46,19 @@ export function Input<T>(props: InputProps<T>) {
 
   const { error } = getFieldState(name, formState);
 
+  const errorStyle = {
+    label: error ? 'text-red-1' : 'text-white-0.5',
+    textInputBorder: error
+      ? 'border-red-1'
+      : 'border-gray-800 focus:border-gary-700',
+  };
   return (
     <div className={className}>
-      <label htmlFor={id} className={'text-s_medium mb-1 pl-2'}>
-        {labelName}
-      </label>
+      {labelName && (
+        <label htmlFor={id} className={'text-s_medium mb-1 pl-2'}>
+          {labelName}
+        </label>
+      )}
 
       {(() => {
         if (type === 'email')
@@ -141,10 +140,10 @@ export function Input<T>(props: InputProps<T>) {
       })()}
 
       {/** 여기 나중에 hook으로 처리해야함 */}
-      {errorMessage && (
+      {error && (
         <div className="pl-2 flex gap-x-1 flex-row items-center mt-[2px]">
           <IcWarning />
-          <p className="text-xs_regular text-red-1">{errorMessage}</p>
+          <p className="text-xs_regular text-red-1">{error.message}</p>
         </div>
       )}
     </div>

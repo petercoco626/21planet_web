@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { GradientButton } from '../base/gradient-button';
 import { Button } from '../base/button';
+import { pathname } from '@/constants/path';
 
 export function Start21Planet() {
   const route = useRouter();

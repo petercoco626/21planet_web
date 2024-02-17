@@ -3,6 +3,7 @@
 import { Button } from '@/components/base/button';
 import { GradientButton } from '@/components/base/gradient-button';
 import { Input } from '@/components/base/input';
+import { Toggle } from '@/components/base/toggle';
 import { FormProvider, useForm } from 'react-hook-form';
 
 export default function DesignPage() {
@@ -16,7 +17,7 @@ export default function DesignPage() {
   });
 
   return (
-    <div>
+    <div className="space-y-10">
       <div className="space-y-3">
         <GradientButton variant="gradient" size="middle">
           button
@@ -56,6 +57,9 @@ export default function DesignPage() {
             submit
           </button>
         </FormProvider>
+      </div>
+      <div>
+        <Toggle />
       </div>
     </div>
   );

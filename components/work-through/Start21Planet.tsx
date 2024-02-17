@@ -12,6 +12,10 @@ export function Start21Planet() {
     route.push(pathname.SIGN_UP);
   };
 
+  const handleLoginButtonClick = () => {
+    route.push(pathname.LOGIN);
+  };
+
   return (
     <>
       <GradientButton
@@ -24,7 +28,7 @@ export function Start21Planet() {
       </GradientButton>
       <div className="flex items-center gap-2 justify-center">
         <span className="text-s_light text-white-0.5">이미 계정이 있나요?</span>
-        <Button variant="text" size="middle">
+        <Button variant="text" size="middle" onClick={handleLoginButtonClick}>
           로그인
         </Button>
       </div>

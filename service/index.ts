@@ -1,11 +1,5 @@
 import axios from 'axios';
 import { refreshAccessToken } from './auth';
-import {
-  getAsyncStorage,
-  removeAsyncStorage,
-  setAsyncStorage,
-} from '@/libs/async-storage';
-import { navigate } from '@/navigations/root-navigator';
 
 export const client = () => {
   const instance = axios.create({
@@ -17,10 +11,10 @@ export const client = () => {
 
   instance.interceptors.request.use(
     async (config) => {
-      const accessToken = await getAsyncStorage('access-token');
-      if (accessToken) {
-        config.headers.Authorization = `Bearer ${accessToken}`;
-      }
+      // const accessToken = await getAsyncStorage('access-token');
+      // if (accessToken) {
+      //   config.headers.Authorization = `Bearer ${accessToken}`;
+      // }
       return config;
     },
     (error) => {
@@ -69,23 +63,22 @@ export const client = () => {
       if (!isAlreadyFetchingAccessToken) {
         isAlreadyFetchingAccessToken = true; // 문닫기 (한 번만 요청)
 
-        const refreshToken = await getAsyncStorage('refresh-token');
+        // const refreshToken = await getAsyncStorage('refresh-token');
 
-        const { data, status } = await refreshAccessToken(refreshToken || '');
-        if (status === 201) {
-          await setAsyncStorage('access-token', data.data.accessToken);
+        // const { data, status } = await refreshAccessToken(refreshToken || '');
+        // if (status === 201) {
+        //   await setAsyncStorage('access-token', data.data.accessToken);
 
-          isAlreadyFetchingAccessToken = false; // 문열기 (초기화)
+        //   isAlreadyFetchingAccessToken = false; // 문열기 (초기화)
 
-          onAccessTokenFetched(data.data.accessToken);
-        }
+        //   onAccessTokenFetched(data.data.accessToken);
+        // }
       }
 
       return retryOriginalRequest; // pending 됐다가 onAccessTokenFetched가 호출될 때 resolve
     } catch (error) {
-      await removeAsyncStorage('refresh-token');
-      await removeAsyncStorage('access-token');
-      navigate('login');
+      // await removeAsyncStorage('refresh-token');
+      // await removeAsyncStorage('access-token');
       return Promise.reject(error);
     }
   }

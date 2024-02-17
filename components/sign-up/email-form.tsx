@@ -5,6 +5,9 @@ import { Input } from '../base/input';
 import { Button } from '../base/button';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
+import { useCheckEmailDuplication } from '@/hooks/api/auth';
+import { Toast } from '../base/toast';
+import { useToggle } from '@/hooks/use-toggle';
 
 interface EmailFormValue {
   email: string;
@@ -12,6 +15,10 @@ interface EmailFormValue {
 
 export function EmailForm() {
   const queryClient = useQueryClient();
+
+  const { toggle, handleToggleOn, handleToggleOff } = useToggle();
+
+  const { mutate: checkEmailDuplicationMutate } = useCheckEmailDuplication();
 
   const setCurrentSignUpProcessType =
     useSignUpActions().setCurrentSignUpProcessType;
@@ -33,8 +40,19 @@ export function EmailForm() {
   const { handleSubmit } = EmailFormMethods;
 
   const handleNextButtonClick = ({ email }: EmailFormValue) => {
-    setCurrentSignUpProcessType('password');
-    queryClient.setQueryData(['sign-up', 'email'], email);
+    checkEmailDuplicationMutate(
+      { email },
+      {
+        onSuccess: ({ data }) => {
+          if (data.canUseThisEmail) {
+            setCurrentSignUpProcessType('password');
+            queryClient.setQueryData(['sign-up', 'email'], email);
+            return;
+          }
+          handleToggleOn();
+        },
+      }
+    );
   };
 
   return (
@@ -47,7 +65,7 @@ export function EmailForm() {
         })}
       >
         <div>
-          <h1 className="text-xxl_light text-white-0.9  my-8">
+          <h1 className="text-xxl_light text-white-0.9  mb-8">
             <span className="text-xxl_bold text-violet-300">
               {writtenNickname}
             </span>
@@ -71,9 +89,17 @@ export function EmailForm() {
             }}
           />
         </div>
-        <Button variant="primary" size="large" className="w-full">
-          다음
-        </Button>
+        <div>
+          <Toast
+            message={'가입된 이메일입니다. 로그인 해주세요!'}
+            classname="mb-6"
+            isToastOn={toggle}
+            onToastOff={handleToggleOff}
+          />
+          <Button variant="primary" size="large" className="w-full">
+            다음
+          </Button>
+        </div>
       </form>
     </FormProvider>
   );

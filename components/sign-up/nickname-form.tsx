@@ -45,7 +45,7 @@ export function NicknameForm() {
         })}
       >
         <div className="">
-          <h1 className="text-xxl_light text-white-0.9  my-8">
+          <h1 className="text-xxl_light text-white-0.9  mb-8">
             21 planet에 오신 걸 환영해요.
             <br />
             어떻게 불러드릴까요?

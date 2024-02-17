@@ -26,8 +26,8 @@ export function Toast({
     <div
       className={clsx(
         'min-w-[200px] max-w-[312px] h-10 rounded-[999px] bg-gray-500 py-3 px-2 mx-auto text-s_medium text-white-0.9 text-center duration-300',
-        isToastOn && '-translate-y-12 opacity-100',
-        !isToastOn && '-translate-y-0 opacity-0 invisible',
+        isToastOn && '-translate-y-0 opacity-100',
+        !isToastOn && 'translate-y-6 opacity-0 invisible',
         classname
       )}
     >

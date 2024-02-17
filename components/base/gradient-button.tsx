@@ -22,7 +22,8 @@ export const GradientButton = ({
   children,
   ...props
 }: ButtonProps) => {
-  const defaultButtonStyle = 'flex items-center justify-center box-border';
+  const defaultButtonStyle =
+    'w-full flex items-center justify-center box-border';
 
   const styleOnSize: Record<ButtonSize, string> = {
     large: 'h-12 text-m_medium ',

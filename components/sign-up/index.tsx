@@ -8,6 +8,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { PasswordForm } from './password-form';
+import { TermsCheck } from './terms/terms-check';
 
 export function SignUpForm() {
   const route = useRouter();
@@ -44,10 +45,11 @@ export function SignUpForm() {
   }, [currentSignUpProcessType]);
 
   return (
-    <section className="w-full h-full">
+    <section className="w-full h-[calc(100%-56px)] pt-8 box-border">
       {currentSignUpProcessType === 'nickname' && <NicknameForm />}
       {currentSignUpProcessType === 'email' && <EmailForm />}
       {currentSignUpProcessType === 'password' && <PasswordForm />}
+      {currentSignUpProcessType === 'terms' && <TermsCheck />}
     </section>
   );
 }

@@ -52,7 +52,7 @@ export function PasswordForm() {
         })}
       >
         <div>
-          <div className="my-8">
+          <div className="mb-8">
             <h1 className="text-xxl_light text-white-0.9  mb-1 ">
               비밀번호를 적어주세요.
             </h1>

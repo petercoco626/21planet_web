@@ -32,7 +32,7 @@ export const Button = ({
 
   const styleOnVariant: Record<ButtonVariant, string> = {
     primary:
-      'bg-violet-500 dactive:bg-violet-400 px-5 text-white active:text-violet-100 ',
+      'bg-violet-500 active:bg-violet-400 px-5 text-white active:text-violet-100',
     secondary: 'bg-gray-600 active:bg-gray-500 px-5 text-white-0.9',
     tertiary:
       'bg-gray-700 active:bg-gray-600 px-5 text-violet-300 active:text-violet-200',

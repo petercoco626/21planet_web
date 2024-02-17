@@ -55,7 +55,10 @@ export function Input<T>(props: InputProps<T>) {
   return (
     <div className={className}>
       {labelName && (
-        <label htmlFor={id} className={'text-s_medium mb-1 pl-2'}>
+        <label
+          htmlFor={id}
+          className={clsx(errorStyle.label, 'text-s_medium mb-1 pl-2')}
+        >
           {labelName}
         </label>
       )}

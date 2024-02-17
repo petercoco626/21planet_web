@@ -4,6 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Input } from '../base/input';
 import { Button } from '../base/button';
 import { useQueryClient } from '@tanstack/react-query';
+import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
 
 interface NicknameFormValue {
   nickname: string;
@@ -11,6 +12,9 @@ interface NicknameFormValue {
 
 export function NicknameForm() {
   const queryClient = useQueryClient();
+
+  const setCurrentSignUpProcessType =
+    useSignUpActions().setCurrentSignUpProcessType;
 
   const defaultNickname = queryClient.getQueryData<string>([
     'sign-up',
@@ -27,6 +31,7 @@ export function NicknameForm() {
   const { handleSubmit } = nicknameFormMethods;
 
   const handleNextButtonClick = ({ nickname }: NicknameFormValue) => {
+    setCurrentSignUpProcessType('email');
     queryClient.setQueryData(['sign-up', 'nickname'], nickname);
   };
 

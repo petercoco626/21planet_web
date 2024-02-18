@@ -8,7 +8,7 @@ export function ChallengeList() {
   const { data: challengeList } = useChallengeList();
 
   return (
-    <div className="w-full  h-full overflow-hidden">
+    <div className="px-6 box-border w-full  h-full overflow-hidden">
       <div className="h-full scrollbar-none overflow-y-scroll">
         {challengeList?.data.length === 0 ? (
           <NoChallengeData />

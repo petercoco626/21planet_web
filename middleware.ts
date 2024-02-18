@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { refreshAccessToken } from './service/auth';
-import axios from 'axios';
 
 export default async function middleware(req: NextRequest) {
   const res = NextResponse.next();

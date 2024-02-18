@@ -3,7 +3,8 @@ export function setCookie(name: string, value: string, days: number) {
   date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
   const expires = `expires=${date.toUTCString()}`;
 
-  const domain = process.env.NODE_ENV === 'production' && 'domain=.photio.io';
+  const domain =
+    process.env.NODE_ENV === 'production' && 'domain=.21planet.world';
   document.cookie = `${name}=${value}; ${expires}; path=/; ${domain}; secure=true; sameSite=None`;
 }
 
@@ -19,15 +20,7 @@ export function getCookie(name: string): string | null {
   return null;
 }
 export function deleteCookie(name: string) {
-  const domain = process.env.NODE_ENV === 'production' && 'domain=photio.io';
+  const domain =
+    process.env.NODE_ENV === 'production' && 'domain=21planet.world';
   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${domain}`;
-}
-
-export function getSupabaseAuthTokenCookie() {
-  const supabaseReferenceId =
-    process.env.NEXT_PUBLIC_BUILD_ENV === 'production'
-      ? 'jlbwwpmzjfqwoxtrbmnt'
-      : 'eoylwnaazbrhgfompehj';
-
-  return `sb-${supabaseReferenceId}-auth-token`;
 }

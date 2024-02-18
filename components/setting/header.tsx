@@ -17,7 +17,7 @@ export function SettingPageHeader() {
   return (
     <header className="w-full h-14 flex justify-between items-center mb-8">
       <GoBackButton />
-      <div className="text-m_medium text-white relative top-[2px]">
+      <div className="text-m_medium text-white relative top-1">
         {headerTitle[currentPath]}
       </div>
       <div className="w-10 h-10" />

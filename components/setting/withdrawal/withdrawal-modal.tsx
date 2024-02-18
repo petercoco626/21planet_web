@@ -5,19 +5,22 @@ import { deleteCookie } from '@/libs/cookie';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
-interface LogoutModalProps {
+interface WithdrawalModalProps {
   onClose: () => void;
   isModalOpen: boolean;
 }
 
-export function LogoutModal({ isModalOpen, onClose }: LogoutModalProps) {
+export function WithdrawalModal({
+  isModalOpen,
+  onClose,
+}: WithdrawalModalProps) {
   const route = useRouter();
 
-  const hanelLogout = () => {
+  const hanelWithdrawal = async () => {
     deleteCookie('21-pl-rf');
     axios.defaults.headers.common.Authorization = '';
     onClose();
-    route.replace(pathname.LOGIN);
+    route.replace(pathname.WORK_THROUGH);
   };
 
   return (
@@ -25,26 +28,17 @@ export function LogoutModal({ isModalOpen, onClose }: LogoutModalProps) {
       <div className="w-full h-full bg-modal-background  flex flex-row items-center justify-center">
         <div className="p-4 bg-gray-800 rounded-3xl">
           <div className="text-m_light text-white-0.9 text-center py-4">
-            로그아웃 할까요?
+            탈퇴했습니다{'\n'}
+            그동안 21planet과 함께해 주셔서 감사합니다.
           </div>
-          <div className="grid grid-cols-2 gap-x-2 mt-4">
-            <Button
-              variant="tertiary"
-              size="large"
-              className="w-full"
-              onClick={onClose}
-            >
-              취소
-            </Button>
-            <Button
-              variant="primary"
-              size="large"
-              className="w-full"
-              onClick={hanelLogout}
-            >
-              로그아웃
-            </Button>
-          </div>
+          <Button
+            variant="primary"
+            size="large"
+            className="w-full"
+            onClick={hanelWithdrawal}
+          >
+            확인
+          </Button>
         </div>
       </div>
     </Modal>

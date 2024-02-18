@@ -15,7 +15,7 @@ export function ProfileLayout() {
   };
 
   return (
-    <div className="w-full flex flex-row justify-between items-center mt-8 mb-6">
+    <div className="w-full flex flex-row justify-between items-center mb-6">
       <div className="flex flex-col">
         <div className="text-xxl_light text-white-0.9">21planet 여행자</div>
         <div className="text-xxl_bold text-white-0.9">

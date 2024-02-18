@@ -20,6 +20,8 @@ interface LoginFormValue {
 }
 
 export function LoginForm() {
+  const queryClient = useQueryClient();
+
   const route = useRouter();
 
   const { mutate: signInMutate } = useSignIn();
@@ -47,7 +49,11 @@ export function LoginForm() {
       {
         onSuccess: ({ data }: SignInResponse) => {
           axios.defaults.headers.common.Authorization = `Bearer ${data?.accessToken}`;
+          setCookie('21-pl-ac', data?.accessToken || '', 1);
           setCookie('21-pl-rf', data?.refreshToken || '', 30);
+          queryClient.refetchQueries({
+            queryKey: ['user-profile'],
+          });
           route.push(pathname.CHALLENGE);
         },
         onError: (error) => {

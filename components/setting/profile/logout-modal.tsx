@@ -15,6 +15,7 @@ export function LogoutModal({ isModalOpen, onClose }: LogoutModalProps) {
 
   const hanelLogout = () => {
     deleteCookie('21-pl-rf');
+    deleteCookie('21-pl-ac');
     axios.defaults.headers.common.Authorization = '';
     onClose();
     route.replace(pathname.LOGIN);

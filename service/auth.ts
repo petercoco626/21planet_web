@@ -95,15 +95,18 @@ export const disagreePersonalForMarketingTerm = async () => {
 };
 
 export const refreshAccessToken = async (refreshToken: string) => {
-  return await axios.post(
-    // 'https://api-dev.21planet.world/auth/refresh',
-    'http://localhost:8080/auth/refresh',
-    {
-      refresh: refreshToken,
-    },
-    {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-    }
-  );
+  const response = await fetch('https://api-dev.21planet.world/auth/refresh', {
+    method: 'POST',
+    body: JSON.stringify({ refresh: refreshToken }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  const tokenInfo = (await response.json()) as {
+    data: {
+      accessToken: string;
+      refreshToken: string;
+    };
+  };
+
+  return { status: response.status, tokenInfo };
 };

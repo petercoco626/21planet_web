@@ -36,14 +36,15 @@ export function DeleteChallengeModal({
     <Modal isOpen={isModalOpen}>
       <div className="p-4 bg-gray-800 rounded-3xl">
         <div className="text-m_light text-white-0.9 text-center py-4">
-          목표를 삭제하시겠어요?{'\n'}
+          목표를 삭제하시겠어요?
+          <br />
           삭제된 목표는 복구할 수 없어요.
         </div>
-        <div className="flex gap-x-2 mt-4">
+        <div className="grid grid-cols-2 gap-x-2 mt-4">
           <Button
             variant="tertiary"
             size="large"
-            className="w-[126px]"
+            className="w-full"
             onClick={onClose}
           >
             취소
@@ -51,7 +52,7 @@ export function DeleteChallengeModal({
           <Button
             variant="primary"
             size="large"
-            className="w-[126px]"
+            className="w-full"
             onClick={handleDeleteChallengeButtonClick}
           >
             삭제

@@ -12,7 +12,8 @@ export function NoChallengeData() {
   return (
     <div className="mt-6">
       <div className="text-s_light text-white-0.5 mb-4 text-center">
-        아직 목표를 정하지 않았어요.{'\n'}
+        아직 목표를 정하지 않았어요.
+        <br />
         목표를 정하고 매일 꾸준히 달성해 봐요!
       </div>
       <Button

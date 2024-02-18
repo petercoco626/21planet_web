@@ -16,7 +16,7 @@ export function WithdrawalModal({
 }: WithdrawalModalProps) {
   const route = useRouter();
 
-  const hanelWithdrawal = async () => {
+  const hanelWithdrawal = () => {
     deleteCookie('21-pl-rf');
     axios.defaults.headers.common.Authorization = '';
     onClose();

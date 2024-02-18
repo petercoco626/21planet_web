@@ -32,7 +32,6 @@ export default async function middleware(req: NextRequest) {
     if (status === 401) {
       res.cookies.delete('21-pl-rf');
       res.cookies.delete('21-pl-ac');
-      axios.defaults.headers.common.Authorization == '';
       return NextResponse.redirect(redirectUrl);
     }
 
@@ -50,7 +49,7 @@ export default async function middleware(req: NextRequest) {
 
     const accessTokenExpires = new Date();
     accessTokenExpires.setTime(
-      refreshTokenExpires.getTime() + 30 * 24 * 60 * 60 * 1000
+      refreshTokenExpires.getTime() + 1 * 24 * 60 * 60 * 1000
     );
 
     res.cookies.set({

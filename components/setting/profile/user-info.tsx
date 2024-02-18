@@ -14,7 +14,7 @@ export default function UserInfo() {
     options: [
       {
         content: (
-          <div className="w-full">
+          <div className="w-full flex flex-col items-start">
             <div className="text-s_light text-white-0.5 mb-[2px]">닉네임</div>
             <div className="text-m_light text-white">{nickname}</div>
           </div>
@@ -22,7 +22,7 @@ export default function UserInfo() {
       },
       {
         content: (
-          <div className="w-full">
+          <div className="w-full flex flex-col items-start">
             <div className="text-s_light text-white-0.5 mb-[2px]">
               이메일(ID)
             </div>

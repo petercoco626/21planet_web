@@ -10,7 +10,7 @@ export default function AskingOptions() {
       {
         content: (
           <div className="w-full flex flex-row justify-between items-center">
-            <div className="text-m_light text-white">1:1문의</div>
+            <div className="text-m_light text-white">1:1 문의</div>
             <div className="w-8 h-8 flex flex-row justify-center items-center">
               <IcCaretRight className="stroke-gray-400" />
             </div>

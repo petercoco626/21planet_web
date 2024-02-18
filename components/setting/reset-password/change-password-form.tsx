@@ -2,7 +2,6 @@
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { useQueryClient } from '@tanstack/react-query';
-import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
 import { Input } from '@/components/base/input';
 import { Button } from '@/components/base/button';
 import { useChangePassword } from '@/hooks/api/auth';
@@ -86,7 +85,7 @@ export function ChangePasswordForm() {
             </p>
           </div>
           <Input
-            name="password"
+            name="newPassword"
             type="password"
             labelName="새로운 비밀번호"
             placeholder={'비밀번호'}
@@ -101,7 +100,7 @@ export function ChangePasswordForm() {
             className="mb-4"
           />
           <Input
-            name="passwordCheck"
+            name="newPasswordCheck"
             type="password"
             labelName="비밀번호 확인"
             placeholder={'비밀번호 확인'}
@@ -116,6 +115,7 @@ export function ChangePasswordForm() {
             validate={(value) =>
               value === currentNewPassword || '비밀번호와 일치하지 않아요'
             }
+            className="mb-8"
           />
         </div>
         <Button variant="primary" size="large" className="w-full">

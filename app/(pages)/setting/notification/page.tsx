@@ -1,3 +1,9 @@
+import { NotificationMarketing } from '@/components/setting/notification/notification-marketing';
+
 export default function NotificationPage() {
-  return <div></div>;
+  return (
+    <div>
+      <NotificationMarketing />
+    </div>
+  );
 }

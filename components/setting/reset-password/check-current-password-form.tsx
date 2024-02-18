@@ -66,7 +66,7 @@ export function CheckCurrentPasswordForm() {
           </h1>
         </div>
         <Input
-          name="password"
+          name="currentPassword"
           type="password"
           labelName="비밀번호"
           placeholder={'비밀번호'}

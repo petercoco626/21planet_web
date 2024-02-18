@@ -1,52 +1,79 @@
 'use client';
 
 import { FormProvider, useForm } from 'react-hook-form';
-import { Input } from '../base/input';
-import { Button } from '../base/button';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
+import { Input } from '@/components/base/input';
+import { Button } from '@/components/base/button';
+import { useChangePassword } from '@/hooks/api/auth';
+import { useUserProfile } from '@/hooks/api/user';
+import { ConfirmResetPasswordModal } from './confirm-reset-password-modal';
+import { useToggle } from '@/hooks/use-toggle';
 import { passwordRegex } from '@/constants/regex';
 
-interface PasswordFormValue {
-  password: string;
-  passwordCheck: string;
+interface ChangePasswordFormValue {
+  newPassword: string;
+  newPasswordCheck: string;
 }
 
-export function PasswordForm() {
+export function ChangePasswordForm() {
   const queryClient = useQueryClient();
 
-  const setCurrentSignUpProcessType =
-    useSignUpActions().setCurrentSignUpProcessType;
+  const { mutateAsync: changePasswordMutate } = useChangePassword();
 
-  const defaultPassword = queryClient.getQueryData<string>([
-    'sign-up',
-    'password',
+  const { data: userProfile } = useUserProfile();
+
+  const {
+    handleToggleOff: handleLogoutModalClose,
+    toggle: isLogoutModalOpen,
+    handleToggleOn,
+  } = useToggle();
+
+  const currentPassword = queryClient.getQueryData<string>([
+    'reset-password',
+    'current-password',
   ]);
 
-  const PasswordFormMethods = useForm<PasswordFormValue>({
+  const changePasswordFormMethods = useForm<ChangePasswordFormValue>({
     mode: 'onSubmit',
     defaultValues: {
-      password: defaultPassword || '',
-      passwordCheck: '',
+      newPassword: '',
+      newPasswordCheck: '',
     },
   });
 
-  const { handleSubmit, watch } = PasswordFormMethods;
+  const { handleSubmit, watch } = changePasswordFormMethods;
 
-  const currentPassword = watch('password');
+  const currentNewPassword = watch('newPassword');
 
-  const handleNextButtonClick = ({ password }: PasswordFormValue) => {
-    setCurrentSignUpProcessType('terms');
-    queryClient.setQueryData(['sign-up', 'password'], password);
+  const handleChangePasswordButtonClick = ({
+    newPassword,
+  }: ChangePasswordFormValue) => {
+    if (!currentPassword) {
+      throw new Error('에러가 발생하였습니다.');
+    }
+
+    changePasswordMutate(
+      {
+        newPassword,
+        email: userProfile?.data.email || '',
+        password: currentPassword,
+      },
+      {
+        onSuccess: () => {
+          handleToggleOn();
+        },
+      }
+    );
   };
 
   return (
-    <FormProvider {...PasswordFormMethods}>
+    <FormProvider {...changePasswordFormMethods}>
       <form
         className="w-full h-full flex flex-col justify-between"
         autoComplete="off"
-        onSubmit={handleSubmit((PasswordFormValue) => {
-          handleNextButtonClick(PasswordFormValue);
+        onSubmit={handleSubmit((ChangePasswordFormValue) => {
+          handleChangePasswordButtonClick(ChangePasswordFormValue);
         })}
       >
         <div>
@@ -61,7 +88,7 @@ export function PasswordForm() {
           <Input
             name="password"
             type="password"
-            labelName="비밀번호"
+            labelName="새로운 비밀번호"
             placeholder={'비밀번호'}
             required={{
               value: true,
@@ -87,14 +114,18 @@ export function PasswordForm() {
               message: '비밀번호와 일치하지 않아요',
             }}
             validate={(value) =>
-              value === currentPassword || '비밀번호와 일치하지 않아요'
+              value === currentNewPassword || '비밀번호와 일치하지 않아요'
             }
           />
         </div>
         <Button variant="primary" size="large" className="w-full">
-          다음
+          완료
         </Button>
       </form>
+      <ConfirmResetPasswordModal
+        isModalOpen={isLogoutModalOpen}
+        onClose={handleLogoutModalClose}
+      />
     </FormProvider>
   );
 }

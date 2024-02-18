@@ -103,7 +103,7 @@ export function Input<T>(props: InputProps<T>) {
               <input
                 id={id}
                 accept={accept}
-                type={type}
+                type={isSecureText ? type : 'text'}
                 placeholder={
                   typeof placeholder === 'string' ? placeholder : undefined
                 }

@@ -15,7 +15,7 @@ export function SettingPageHeader() {
   const currentPath = usePathname();
 
   return (
-    <header className="w-full h-14 flex justify-between items-center">
+    <header className="w-full h-14 flex justify-between items-center mb-8">
       <GoBackButton />
       <div className="text-m_medium text-white relative top-[2px]">
         {headerTitle[currentPath]}

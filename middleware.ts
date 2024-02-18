@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { pathname } from './constants/path';
 import { refreshAccessToken } from './service/auth';
 import axios from 'axios';
 

@@ -6,7 +6,7 @@ import axios from 'axios';
 export default async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
-  const redirectUrl = req.nextUrl.origin + pathname.LOGIN;
+  const redirectUrl = req.nextUrl.origin;
 
   const accessToken = req.cookies.get('21-pl-ac')?.value;
 

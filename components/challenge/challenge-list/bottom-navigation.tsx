@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import IcPlanet from '@/assets/icon/ic-planet.svg';
 import IcMedal from '@/assets/icon/ic-medal.svg';
 import IcPlus from '@/assets/icon/ic-plus.svg';
+import clsx from 'clsx';
 
 export function BottomNavigation() {
   const { data: challengeList } = useChallengeList();
@@ -39,7 +40,13 @@ export function BottomNavigation() {
         isToastOn={toggle}
         onToastOff={handleToggleOff}
       />
-      <div className="bg-[#322e4d99] w-full h-14 flex flex-row items-center justify-between px-16 pt-1 box-border rounded-t-3xl border-t-[1px] border-x-[1px] border-[#7a739999]">
+      <div
+        className={clsx(
+          'bg-[#322e4d99] w-full h-14 flex flex-row items-center justify-between px-16 pt-1 box-border rounded-t-3xl',
+          'border-t-[1px] border-x-[1px] border-[#7a739999]',
+          'backdrop-blur'
+        )}
+      >
         <button onClick={handleRouteHomeScreen}>
           <div className="w-1 h-1 rounded-full bg-white-0.9 mb-[2px] mx-auto" />
           <IcPlanet />

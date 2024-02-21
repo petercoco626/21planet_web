@@ -5,10 +5,10 @@ import { BottomNavigation } from '@/components/common/bottom-navigation';
 export default function BadgePage() {
   return (
     <main className="w-full h-full relative">
-      <div className="px-8 box-border h-full flex flex-col justify-between">
+      <div className=" box-border h-full flex flex-col justify-between">
         <div>
           <BadgeHeader />
-          <div className="mt-8">
+          <div className="mt-8 px-8">
             <h1 className="text-xxl_medium text-white-0.9 mb-2 text-center">
               배지 컬렉션
             </h1>

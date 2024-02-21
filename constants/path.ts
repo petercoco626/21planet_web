@@ -6,6 +6,7 @@ export const pathname = {
   ACCOUNT: '/account',
   FORGET_PASSWORD: '/forget-password',
   BADGE: '/badge',
+  BADGE_DETAIL: '/badge/detail',
   COMMENT_CHALLENGE: '/challenge/comment',
   CREATE_CHALLENGE: '/challenge/create',
   DETAIL_CAHLLENGE: '/challenge/detail',

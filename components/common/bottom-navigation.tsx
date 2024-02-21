@@ -4,7 +4,7 @@ import { Toast } from '@/components/base/toast';
 import { pathname } from '@/constants/path';
 import { useChallengeList } from '@/hooks/api/challenge';
 import { useToggle } from '@/hooks/use-toggle';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import IcPlanet from '@/assets/icon/ic-planet.svg';
 import IcMedal from '@/assets/icon/ic-medal.svg';
 import IcPlus from '@/assets/icon/ic-plus.svg';
@@ -14,6 +14,8 @@ export function BottomNavigation() {
   const { data: challengeList } = useChallengeList();
 
   const route = useRouter();
+
+  const currentPath = usePathname();
 
   const { handleToggleOn, toggle, handleToggleOff } = useToggle();
 
@@ -32,6 +34,10 @@ export function BottomNavigation() {
     route.push(pathname.BADGE);
   };
 
+  const isChallengePage = currentPath === '/challenge';
+
+  const isBadgePage = currentPath === '/badge';
+
   return (
     <div className="w-full absolute bottom-0 z-10 ">
       <Toast
@@ -48,12 +54,22 @@ export function BottomNavigation() {
         )}
       >
         <button onClick={handleRouteHomeScreen}>
-          <div className="w-1 h-1 rounded-full bg-white-0.9 mb-[2px] mx-auto" />
+          <div
+            className={clsx(
+              'w-1 h-1 rounded-full  mb-[2px] mx-auto',
+              isChallengePage ? 'bg-white-0.9' : 'bg-transparent'
+            )}
+          />
           <IcPlanet />
         </button>
 
         <button onClick={handleRouteBadgeScreen}>
-          <div className="w-1 h-1 rounded-full bg-white-0.9 mb-[2px] mx-auto" />
+          <div
+            className={clsx(
+              'w-1 h-1 rounded-full  mb-[2px] mx-auto',
+              isBadgePage ? 'bg-white-0.9' : 'bg-transparent'
+            )}
+          />
           <IcMedal />
         </button>
       </div>

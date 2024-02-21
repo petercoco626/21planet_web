@@ -1,4 +1,4 @@
-import { BottomNavigation } from '@/components/challenge/challenge-list/bottom-navigation';
+import { BottomNavigation } from '@/components/common/bottom-navigation';
 import { ChallengeList } from '@/components/challenge/challenge-list/challenge-list';
 import { Greeting } from '@/components/challenge/challenge-list/greeting';
 import { ChallengeListHeader } from '@/components/challenge/challenge-list/header';

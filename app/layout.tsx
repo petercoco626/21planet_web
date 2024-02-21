@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ClientLayout } from './client-layout';
+import { BackgroundLayout } from './(pages)/background-layout';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,10 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background">
+      <body className="w-screen h-screen bg-background">
         <ClientLayout>
-          <div className="w-screen h-screen  max-w-[500px] mx-auto">
+          <div className="w-full h-full  max-w-[500px] mx-auto relative">
             {children}
+            <BackgroundLayout />
           </div>
         </ClientLayout>
         <div id="modal-root" />

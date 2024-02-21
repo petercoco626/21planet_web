@@ -14,7 +14,7 @@ export const ChallengeCard = ({ challenge }: { challenge: Challenge }) => {
 
   return (
     <button
-      className="rounded-xl border-[1px] border-[#7a739999] w-full bg-[#322e4d99] overflow-hidden mb-3"
+      className="rounded-xl border-[1px] border-[#7a739999] w-full bg-[#322e4d] bg-opacity-60 overflow-hidden mb-3 backdrop-blur"
       onClick={handleRouteDetailChallengeScreen}
     >
       <div className="flex p-6 gap-[10px]">

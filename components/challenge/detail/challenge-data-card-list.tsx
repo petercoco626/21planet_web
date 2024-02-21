@@ -29,8 +29,8 @@ export function ChallengeDataCardList({
       : null;
 
   return (
-    <div className=" w-full h-full flex items-center justify-center">
-      <div className="max-w-[272px] grid grid-cols-3 mx-auto gap-4">
+    <div className=" w-full h-full flex justify-center overflow-hidden">
+      <div className="max-w-[272px] grid grid-cols-3 mx-auto gap-4 overflow-y-scroll scrollbar-none pb-10 box-border">
         {challengeCheckList.data.map((checkList, index) => (
           <ChallengeDateCard
             checkedChallenge={checkList}

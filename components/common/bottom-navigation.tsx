@@ -74,14 +74,25 @@ export function BottomNavigation() {
         </button>
       </div>
       <button
-        className="w-14 h-14 rounded-full bottom-7 absolute left-1/2 -translate-x-1/2 flex items-center justify-center"
+        className={clsx(
+          'rounded-full bottom-4 absolute left-1/2 -translate-x-1/2 flex items-center justify-center border-[10px] border-background',
+          ''
+        )}
         type="button"
         onClick={handleRouteCreateChallengeScreen}
-        style={{
-          background: 'linear-gradient(93deg, #5A49BF 15.57%, #B069D1 83.39%)',
-        }}
       >
-        <IcPlus />
+        <div className="bg-transparent w-5 h-5 shadow-myShadow1 absolute top-[26px] -right-[26px] rounded-tl-[20px]" />
+        <div className="bg-transparent w-5 h-5 shadow-myShadow2 absolute top-[26px] -left-[26px] rounded-tr-[20px]" />
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center"
+          style={{
+            background:
+              'linear-gradient(93deg, #5A49BF 15.57%, #B069D1 83.39%)',
+            // background: '#5A49BF',
+          }}
+        >
+          <IcPlus />
+        </div>
       </button>
     </div>
   );

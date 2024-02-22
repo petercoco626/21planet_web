@@ -4,9 +4,12 @@ import { useRouter } from 'next/navigation';
 import { GradientButton } from '../base/gradient-button';
 import { Button } from '../base/button';
 import { pathname } from '@/constants/path';
+import { useWebviewStore } from '@/stores/webview/webview.store';
 
 export function Start21Planet() {
   const route = useRouter();
+
+  const webviewMessage = useWebviewStore().webviewMessage;
 
   const handle21PlanetStartButtonClick = () => {
     route.push(pathname.SIGN_UP);
@@ -28,6 +31,7 @@ export function Start21Planet() {
       </GradientButton>
       <div className="flex items-center gap-2 justify-center">
         <span className="text-s_light text-white-0.5">이미 계정이 있나요?</span>
+        <span className="text-s_light text-white-0.5">{webviewMessage}</span>
         <Button variant="text" size="middle" onClick={handleLoginButtonClick}>
           로그인
         </Button>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ClientLayout } from './client-layout';
 import { BackgroundLayout } from './(pages)/background-layout';
+import { WebViewControl } from './webViewControl';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -20,6 +21,7 @@ export default function RootLayout({
           <div className="w-full h-full  max-w-[500px] mx-auto relative">
             {children}
             <BackgroundLayout />
+            <WebViewControl />
           </div>
         </ClientLayout>
         <div id="modal-root" />

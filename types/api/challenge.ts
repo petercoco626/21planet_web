@@ -1,7 +1,7 @@
 import { ChallengeCheck } from './challenge-check';
 
 export type ChallengeType = 'COMMON';
-export type ChallengeStatus = 'LIVE' | 'DELETED';
+export type ChallengeStatus = 'LIVE' | 'DELETED' | 'COMPLETE';
 
 export type Challenge = {
   id: string;
@@ -11,6 +11,7 @@ export type Challenge = {
   title: string;
   checkedDateListLength: number;
   currentPlanet: string | null;
+  status: ChallengeStatus;
 };
 
 export type ChallengeListResponse = {

@@ -15,6 +15,15 @@ import {
   DeleteChallengeRequest,
 } from '@/types/api/challenge';
 
+interface ErrorResponse {
+  success: boolean;
+  statusCode: number;
+  timestamp: string;
+  path: string;
+  message: string;
+  error: string;
+}
+
 export const useChallengeList = () =>
   useQuery<ChallengeListResponse, AxiosError>({
     queryKey: ['challenges'],
@@ -38,7 +47,11 @@ export const useChallengeChecksOnChallengeId = (challengeId: string) =>
 
 export const useCreateChallenge = () => {
   const queryClient = useQueryClient();
-  return useMutation<AxiosResponse, AxiosError, CreateChallengeRequest>({
+  return useMutation<
+    AxiosResponse,
+    AxiosError<ErrorResponse>,
+    CreateChallengeRequest
+  >({
     mutationFn: createChallenge,
     onSuccess: () => {
       queryClient.refetchQueries({

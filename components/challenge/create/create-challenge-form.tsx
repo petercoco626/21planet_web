@@ -9,6 +9,7 @@ import { GradientButton } from '@/components/base/gradient-button';
 import { Toast } from '@/components/base/toast';
 import { useCreateChallenge } from '@/hooks/api/challenge';
 import clsx from 'clsx';
+import { isAxiosError } from 'axios';
 
 interface CreateChallengeFormValue {
   title: string;
@@ -52,6 +53,9 @@ export function CreateChallengeForm() {
       {
         onSuccess: () => {
           route.push(pathname.CHALLENGE);
+        },
+        onError: (error) => {
+          alert(error.response?.data.message);
         },
       }
     );

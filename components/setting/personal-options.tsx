@@ -3,7 +3,7 @@
 import IcCaretRight from '@/assets/icon/ic-caret-right.svg';
 import OptionListLayout from './option-list-layout';
 
-export default function PersonalOptions() {
+export function PersonalOptions() {
   const optionList: OptionList = {
     label: '일반',
     options: [

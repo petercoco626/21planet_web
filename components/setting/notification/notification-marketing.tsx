@@ -2,7 +2,6 @@
 
 import IcCaretRight from '@/assets/icon/ic-caret-right.svg';
 import { useUserProfile } from '@/hooks/api/user';
-
 import {
   useAgreeMarketingTerm,
   useDisagreeMarketingTerm,
@@ -16,6 +15,8 @@ import { Toggle } from '@/components/base/toggle';
 import { useState } from 'react';
 import { useToggle } from '@/hooks/use-toggle';
 import { Toast } from '@/components/base/toast';
+import { TermNotionModal } from '../term-notion-modal';
+import { termNotionIdInfo } from '@/constants/term-notion';
 
 export function NotificationMarketing() {
   const { data: userProfile, error } = useUserProfile();
@@ -23,6 +24,18 @@ export function NotificationMarketing() {
   const queryClient = useQueryClient();
 
   const { toggle, handleToggleOff, handleToggleOn } = useToggle();
+
+  const {
+    toggle: isMarketingTermModalOpen,
+    handleToggleOn: handleMarketingTermModalOpen,
+    handleToggleOff: handleMarketingTermModalClose,
+  } = useToggle();
+
+  const {
+    toggle: isMarketingPersonalTermModalOpen,
+    handleToggleOn: handleMarketingPersonalTermModalOpen,
+    handleToggleOff: handleMarketingPersonalTermModalClose,
+  } = useToggle();
 
   const [toastMessage, setToastMessage] = useState('');
 
@@ -102,7 +115,9 @@ export function NotificationMarketing() {
             </div>
           </div>
         ),
-        onClick: () => {},
+        onClick: () => {
+          handleMarketingPersonalTermModalOpen();
+        },
       },
       {
         content: (
@@ -134,7 +149,9 @@ export function NotificationMarketing() {
             </div>
           </div>
         ),
-        onClick: () => {},
+        onClick: () => {
+          handleMarketingTermModalOpen();
+        },
       },
       {
         content: (
@@ -168,6 +185,16 @@ export function NotificationMarketing() {
         classname="mb-10"
         isToastOn={toggle}
         onToastOff={handleToggleOff}
+      />
+      <TermNotionModal
+        isModalOpen={isMarketingTermModalOpen}
+        onClose={handleMarketingTermModalClose}
+        notionPageId={termNotionIdInfo.marketing}
+      />
+      <TermNotionModal
+        isModalOpen={isMarketingPersonalTermModalOpen}
+        onClose={handleMarketingPersonalTermModalClose}
+        notionPageId={termNotionIdInfo.personal_for_marketing}
       />
     </>
   );

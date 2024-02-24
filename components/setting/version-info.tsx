@@ -3,7 +3,7 @@
 import { Button } from '../base/button';
 import OptionListLayout from './option-list-layout';
 
-export default function VersionInfo() {
+export function VersionInfo() {
   const optionList: OptionList = {
     label: '앱 버전',
     options: [

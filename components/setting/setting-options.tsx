@@ -4,9 +4,17 @@ import IcCaretRight from '@/assets/icon/ic-caret-right.svg';
 import OptionListLayout from './option-list-layout';
 import { pathname } from '@/constants/path';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useToggle } from '@/hooks/use-toggle';
+import { TermNotionModal } from './term-notion-modal';
+import { termNotionIdInfo } from '@/constants/term-notion';
 
-export default function SettingOptions() {
+export function SettingOptions() {
+  const {
+    toggle: isTermModalOpen,
+    handleToggleOn: handleTermModalOpen,
+    handleToggleOff: handleTermModalClose,
+  } = useToggle();
+
   const route = useRouter();
 
   const optionList: OptionList = {
@@ -14,19 +22,14 @@ export default function SettingOptions() {
     options: [
       {
         content: (
-          <Link
-            href={
-              'https://zizzi-world.notion.site/3f2cc61446f44ff8b718862fd6352c61?pvs=4'
-            }
-            className="w-full flex flex-row justify-between items-center"
-          >
+          <div className="w-full flex flex-row justify-between items-center">
             <div className="text-m_light text-white">약관 및 동의 내용</div>
             <div className="w-8 h-8 flex flex-row justify-center items-center">
               <IcCaretRight className="stroke-gray-400" />
             </div>
-          </Link>
+          </div>
         ),
-        onClick: () => {},
+        onClick: handleTermModalOpen,
       },
       {
         content: (
@@ -44,5 +47,14 @@ export default function SettingOptions() {
     ],
   };
 
-  return <OptionListLayout optionLayoutInfo={optionList} classname="mb-6" />;
+  return (
+    <>
+      <OptionListLayout optionLayoutInfo={optionList} classname="mb-6" />
+      <TermNotionModal
+        isModalOpen={isTermModalOpen}
+        onClose={handleTermModalClose}
+        notionPageId={termNotionIdInfo.service}
+      />
+    </>
+  );
 }

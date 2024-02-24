@@ -3,7 +3,7 @@
 import IcCaretRight from '@/assets/icon/ic-caret-right.svg';
 import OptionListLayout from './option-list-layout';
 
-export default function AskingOptions() {
+export function AskingOptions() {
   const optionList: OptionList = {
     label: '묻고 답하기',
     options: [

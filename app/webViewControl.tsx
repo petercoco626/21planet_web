@@ -15,26 +15,25 @@ export function WebViewControl() {
 
   const onMessageEvent = (e: any) => {
     const message = String(e.data);
-    console.log(e.data);
     if (message !== 'fromApp') {
       route.replace(pathname.LOGIN);
     }
   };
 
-  useEffect(() => {
-    if (!isUIWebView()) {
-      route.replace(pathname.LOGIN);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!isUIWebView()) {
+  //     route.replace(pathname.LOGIN);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    const receiver = isUIWebView() ? window : document;
+  // useEffect(() => {
+  //   const receiver = isUIWebView() ? window : document;
 
-    receiver.addEventListener('message', onMessageEvent);
-    return () => {
-      receiver.removeEventListener('message', onMessageEvent);
-    };
-  }, []);
+  //   receiver.addEventListener('message', onMessageEvent);
+  //   return () => {
+  //     receiver.removeEventListener('message', onMessageEvent);
+  //   };
+  // }, []);
 
   return <></>;
 }

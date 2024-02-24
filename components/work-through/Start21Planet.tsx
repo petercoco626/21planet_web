@@ -5,6 +5,7 @@ import { GradientButton } from '../base/gradient-button';
 import { Button } from '../base/button';
 import { pathname } from '@/constants/path';
 import { useWebviewStore } from '@/stores/webview/webview.store';
+import { Carousel } from '../common/carousel';
 
 export function Start21Planet() {
   const route = useRouter();
@@ -21,6 +22,7 @@ export function Start21Planet() {
 
   return (
     <>
+      <Carousel />
       <GradientButton
         variant="gradient"
         size="large"

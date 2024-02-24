@@ -33,7 +33,7 @@ export function ChallengeCommentInfo({
   const { checkedAt, comment, id, planet } = filteredChallengeChecks[pageIndex];
 
   return (
-    <div>
+    <div className="mx-6 box-border overflow-hidden">
       <ChallengeTitle title={challenge.data.title} />
       <CheckedDatePlanetCarousel
         challengeChecks={filteredChallengeChecks}

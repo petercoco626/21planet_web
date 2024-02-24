@@ -60,7 +60,7 @@ export function WriteCommentForm({
 
   if (!isCommentWriteMode)
     return (
-      <div className="px-6 mb-12">
+      <div className="mb-12">
         <div className="mb-2 flex flex-row items-center gap-x-2">
           <div className="text-l_bold text-white">여행일지</div>
           <button onClick={() => setIsCommentWriteMode(true)}>

@@ -1,5 +1,9 @@
 import { ChallengeCheck } from '@/types/api/challenge-check';
 import clsx from 'clsx';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider, { Settings } from 'react-slick';
+import './carousel.css';
 
 interface CheckedDateInfoProps {
   challengeChecks: ChallengeCheck[];
@@ -10,21 +14,28 @@ export function CheckedDatePlanetCarousel({
   challengeChecks,
   onChangePageIndex,
 }: CheckedDateInfoProps) {
-  return (
-    <div className="mb-6 overflow-hidden">
-      <div className="flex overflow-x-scroll scrollbar-none">
-        {challengeChecks.map((planetInfo) => (
-          <Planet imageUrl={planetInfo.planet.url} key={planetInfo.id} />
-        ))}
-      </div>
-    </div>
-  );
-}
+  const settings: Settings = {
+    slidesToShow: 1,
+    className: 'center variable-width',
+    variableWidth: true,
+    centerMode: true,
+    speed: 500,
+    arrows: false,
+    infinite: false,
+    afterChange: (current) => onChangePageIndex(current),
+  };
 
-function Planet({ imageUrl }: { imageUrl: string }) {
   return (
-    <div className="flex flex-row justify-center w-full">
-      <img className={clsx('w-[180px] h-[180px]')} src={imageUrl} />
+    <div className="w-full box-border mb-4">
+      <Slider {...settings}>
+        {challengeChecks.map((planetInfo, idx) => (
+          <img
+            className={clsx('w-[180px] h-[180px]')}
+            src={planetInfo.planet.url}
+            key={planetInfo.id}
+          />
+        ))}
+      </Slider>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function ChallengeCommentPage({
   params: { id: challengeId },
 }: ChallengeCommentPageParams) {
   return (
-    <div>
+    <div className="overflow-hidden">
       <ChallengeCommentHeader />
       <ChallengeCommentInfo challengeId={challengeId} />
     </div>

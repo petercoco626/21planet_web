@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import IcCheck from '@/assets/icon/ic-check.svg';
 import { useRouter } from 'next/navigation';
 import { pathname } from '@/constants/path';
+import { CheckedChallengeDateInfoModal } from './checked-challenge-date-info-modal';
+import { useToggle } from '@/hooks/use-toggle';
 
 interface ChallengeDateCardProps {
   checkedChallenge: ChallengeCheck | null;
@@ -20,6 +22,8 @@ export function ChallengeDateCard({
 }: ChallengeDateCardProps) {
   const route = useRouter();
 
+  const { toggle, handleToggleOn, handleToggleOff } = useToggle();
+
   const { mutateAsync: checkChallengeSequenceMutate } = useCheckDateOnChallenge(
     {
       challengeId,
@@ -28,10 +32,12 @@ export function ChallengeDateCard({
   );
 
   const handleCheckToday = async () => {
-    await checkChallengeSequenceMutate();
+    await checkChallengeSequenceMutate(undefined, {
+      onSuccess: handleToggleOn,
+    });
   };
 
-  const handleRouteChekcedDateDetail = (challengeCheckId: string) => {
+  const handleRouteChekcedDateDetail = () => {
     route.push(pathname.COMMENT_CHALLENGE + `/${challengeId}`);
   };
 
@@ -67,15 +73,19 @@ export function ChallengeDateCard({
   if (checkedChallenge === null) return null;
 
   return (
-    <button
-      type="button"
-      onClick={() => handleRouteChekcedDateDetail(checkedChallenge.id)}
-    >
-      <img
-        className="w-[80px] h-[80px] rounded-full cursor-pointer"
-        src={checkedChallenge.planet.url}
-        alt="21planet_planet"
+    <>
+      <button type="button" onClick={() => handleRouteChekcedDateDetail()}>
+        <img
+          className="w-[80px] h-[80px] rounded-full cursor-pointer"
+          src={checkedChallenge.planet.url}
+          alt="21planet_planet"
+        />
+      </button>
+      <CheckedChallengeDateInfoModal
+        checkedChallenge={checkedChallenge}
+        isModalOpen={toggle}
+        onClose={handleToggleOff}
       />
-    </button>
+    </>
   );
 }

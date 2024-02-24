@@ -19,7 +19,7 @@ export default function RootLayout({
       <body
         className="w-screen h-screen font-SUIT"
         style={{
-          background: 'linear-gradient(339deg, #302773 0%, #0E0D19 100%)',
+          background: 'linear-gradient(0deg, #302773 0%, #0E0D1A 100%)',
         }}
       >
         <ClientLayout>

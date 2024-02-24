@@ -51,6 +51,7 @@ export const GradientButton = ({
       {...props}
       style={{
         background: 'linear-gradient(94deg, #5A49BF 0.69%, #B069D1 100%)',
+        boxShadow: '0px 0px 10px 0px rgba(130, 63, 166, 0.50)',
       }}
     >
       {isLoading ? null : children}

@@ -14,10 +14,14 @@ export const ChallengeCard = ({ challenge }: { challenge: Challenge }) => {
 
   return (
     <button
-      className="rounded-xl border-[1px] border-[#7a739999] w-full bg-[#322e4d] bg-opacity-60 overflow-hidden mb-3 backdrop-blur"
+      className="rounded-xl  border-[1px] border-white-0.15 w-full  mb-3 backdrop-blur overflow-hidden"
       onClick={handleRouteDetailChallengeScreen}
+      style={{
+        background:
+          'linear-gradient(115deg,rgba(122,115,153,0.6) 0%, rgba(50,46,77,0.0) 98.94%)',
+      }}
     >
-      <div className="flex p-6 gap-[10px]">
+      <div className="flex p-6 box-border gap-[10px]">
         <CurrentPlanetOrBadgeStatus
           badge={null}
           currentPlanet={challenge.currentPlanet}

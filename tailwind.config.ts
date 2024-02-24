@@ -1,3 +1,4 @@
+import { Syncopate } from 'next/font/google';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -277,7 +278,7 @@ const config: Config = {
         ],
       },
       fontFamily: {
-        suit: 'SUIT-Medium',
+        SUIT: 'suit',
       },
     },
     keyframes: {

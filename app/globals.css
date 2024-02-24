@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 900;
+  src: url('../assets/fonts/SUIT-ExtraBold.otf');
+}
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 700;
+  src: url('../assets/fonts/SUIT-Bold.otf');
+}
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 500;
+  src: url('../assets/fonts/SUIT-Medium.otf');
+}
+@font-face {
+  font-family: 'SUIT';
+  font-weight: 100;
+  src: url('../assets/fonts/SUIT-Thin.otf');
+}

@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="w-screen h-screen bg-background">
+      <body className="w-screen h-screen bg-background font-SUIT">
         <ClientLayout>
           <div className="w-full h-full  max-w-[500px] mx-auto relative">
             {children}

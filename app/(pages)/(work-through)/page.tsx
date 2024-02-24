@@ -6,7 +6,7 @@ const syncopate = Syncopate({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
   return (
-    <main className="w-full h-full px-6 flex flex-col items-center justify-center h-full">
+    <main className="w-full px-6 flex flex-col items-center justify-center h-full">
       <h1
         className={clsx(
           'text-white-0.9 text-xxxl_medium sha shadow-[#CECEFD] [text-shadow:_0_0_10px_#CECEFD]',

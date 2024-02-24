@@ -69,7 +69,7 @@ export function LoginForm() {
   return (
     <FormProvider {...LoginFormMethods}>
       <form
-        className="w-full h-[calc(100%-56px)]"
+        className="w-full"
         autoComplete="off"
         onSubmit={handleSubmit((LoginFormValue) => {
           handleNextButtonClick(LoginFormValue);

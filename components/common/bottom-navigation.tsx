@@ -39,7 +39,7 @@ export function BottomNavigation() {
   const isBadgePage = currentPath === '/badge';
 
   return (
-    <div className="w-full absolute bottom-0 z-10 ">
+    <div className="w-full absolute bottom-10 z-10 px-4 box-border ">
       <Toast
         message="3개 이상은 만들 수 없어요!"
         classname="mb-10"
@@ -48,8 +48,7 @@ export function BottomNavigation() {
       />
       <div
         className={clsx(
-          'bg-[#322e4d99] w-full h-14 flex flex-row items-center justify-between px-16 pt-1 box-border rounded-t-3xl',
-          'border-t-[1px] border-x-[1px] border-[#7a739999]',
+          'w-full bg-gray-800 h-16 flex flex-row items-center justify-between px-12 py-2 box-border rounded-3xl',
           'backdrop-blur'
         )}
       >
@@ -60,9 +59,26 @@ export function BottomNavigation() {
               isChallengePage ? 'bg-white-0.9' : 'bg-transparent'
             )}
           />
-          <IcPlanet />
+          <IcPlanet
+            className={clsx(
+              isChallengePage ? 'fill-white-0.9' : 'fill-white-0.15'
+            )}
+          />
         </button>
-
+        <button
+          className={clsx(
+            'w-12 h-12 rounded-full flex items-center justify-center'
+          )}
+          type="button"
+          onClick={handleRouteCreateChallengeScreen}
+          style={{
+            background:
+              'linear-gradient(93deg, #5A49BF 15.57%, #B069D1 83.39%)',
+            boxShadow: '0px 0px 10px 0px rgba(130, 63, 166, 0.50)',
+          }}
+        >
+          <IcPlus />
+        </button>
         <button onClick={handleRouteBadgeScreen}>
           <div
             className={clsx(
@@ -70,29 +86,11 @@ export function BottomNavigation() {
               isBadgePage ? 'bg-white-0.9' : 'bg-transparent'
             )}
           />
-          <IcMedal />
+          <IcMedal
+            className={clsx(isBadgePage ? 'fill-white-0.9' : 'fill-white-0.15')}
+          />
         </button>
       </div>
-      <button
-        className={clsx(
-          'rounded-full bottom-4 absolute left-1/2 -translate-x-1/2 flex items-center justify-center border-[10px] border-background',
-          ''
-        )}
-        type="button"
-        onClick={handleRouteCreateChallengeScreen}
-      >
-        <div className="bg-transparent w-5 h-5 shadow-myShadow1 absolute top-[26px] -right-[26px] rounded-tl-[20px]" />
-        <div className="bg-transparent w-5 h-5 shadow-myShadow2 absolute top-[26px] -left-[26px] rounded-tr-[20px]" />
-        <div
-          className="w-14 h-14 rounded-full flex items-center justify-center"
-          style={{
-            background:
-              'linear-gradient(93deg, #5A49BF 15.57%, #B069D1 83.39%)',
-          }}
-        >
-          <IcPlus />
-        </div>
-      </button>
     </div>
   );
 }

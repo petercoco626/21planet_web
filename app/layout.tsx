@@ -16,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="w-screen h-screen bg-background font-SUIT">
+      <body
+        className="w-screen h-screen font-SUIT"
+        style={{
+          background: 'linear-gradient(339deg, #302773 0%, #0E0D19 100%)',
+        }}
+      >
         <ClientLayout>
           <div className="w-full h-full  max-w-[500px] mx-auto relative">
             {children}

@@ -88,7 +88,6 @@ export function BottomNavigation() {
           style={{
             background:
               'linear-gradient(93deg, #5A49BF 15.57%, #B069D1 83.39%)',
-            // background: '#5A49BF',
           }}
         >
           <IcPlus />

@@ -5,9 +5,15 @@ interface ChallengeTitleProps {
 export function ChallengeTitle({ title }: ChallengeTitleProps) {
   return (
     <div className="flex justify-center">
-      <span className="rounded-xl bg-white-0.5 mb-8 border border-gray-400 mt-4 text-white-0.9 p-3">
+      <div
+        className="mb-8 mt-4 border-[0.5px] border-white-0.5 text-white-0.9 relative flex items-center justify-center p-3 box-border break-keep rounded-xl"
+        style={{
+          background:
+            'linear-gradient(115deg,rgba(122,115,153,0.6) 0%, rgba(50,46,77,0.0) 98.94%)',
+        }}
+      >
         {title}
-      </span>
+      </div>
     </div>
   );
 }

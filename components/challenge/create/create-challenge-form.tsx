@@ -55,7 +55,10 @@ export function CreateChallengeForm() {
           route.push(pathname.CHALLENGE);
         },
         onError: (error) => {
-          alert(error.response?.data.message);
+          if (error.response?.data.message) {
+            setLoginErrorMessage(error.response?.data.message);
+            handleToggleOn();
+          }
         },
       }
     );

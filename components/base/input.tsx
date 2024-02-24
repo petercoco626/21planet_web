@@ -20,10 +20,10 @@ type InputProps<T> = {
 } & RegisterOptions;
 
 const textInputWrapperDefaultStyle =
-  'w-full h-12 px-4 box-border rounded-xl border-[1px] bg-gray-800 active:bg-gray-700 focus:bg-gray-700 placeholder:text-[rgba(255,255,255,0.3)]';
+  'w-full h-12 px-4 box-border rounded-xl border-[1px] bg-gray-800 active:bg-gray-700 focus:bg-gray-700 ';
 
 const textInputDefaultStyle =
-  'text-white text-m_light bg-transparent outline-none';
+  'text-white text-m_light bg-transparent outline-none placeholder-white-0.15';
 
 export function Input<T>(props: InputProps<T>) {
   const {

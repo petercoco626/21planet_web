@@ -23,29 +23,27 @@ export function LogoutModal({ isModalOpen, onClose }: LogoutModalProps) {
 
   return (
     <Modal isOpen={isModalOpen}>
-      <div className="w-full h-full bg-modal-background  flex flex-row items-center justify-center">
-        <div className="p-4 bg-gray-800 rounded-3xl">
-          <div className="text-m_light text-white-0.9 text-center py-4">
-            로그아웃 할까요?
-          </div>
-          <div className="grid grid-cols-2 gap-x-2 mt-4">
-            <Button
-              variant="tertiary"
-              size="large"
-              className="w-full"
-              onClick={onClose}
-            >
-              취소
-            </Button>
-            <Button
-              variant="primary"
-              size="large"
-              className="w-full"
-              onClick={hanelLogout}
-            >
-              로그아웃
-            </Button>
-          </div>
+      <div className="p-4 bg-gray-700 rounded-3xl">
+        <div className="text-m_light text-white-0.9 text-center py-4">
+          로그아웃 할까요?
+        </div>
+        <div className="grid grid-cols-2 gap-x-2 mt-4">
+          <Button
+            variant="secondary"
+            size="large"
+            className="w-full"
+            onClick={onClose}
+          >
+            취소
+          </Button>
+          <Button
+            variant="primary"
+            size="large"
+            className="w-full"
+            onClick={hanelLogout}
+          >
+            로그아웃
+          </Button>
         </div>
       </div>
     </Modal>

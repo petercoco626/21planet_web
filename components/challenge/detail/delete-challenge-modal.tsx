@@ -34,7 +34,7 @@ export function DeleteChallengeModal({
 
   return (
     <Modal isOpen={isModalOpen}>
-      <div className="p-4 bg-gray-800 rounded-3xl">
+      <div className="p-4 bg-gray-700 rounded-3xl">
         <div className="text-m_light text-white-0.9 text-center py-4">
           목표를 삭제하시겠어요?
           <br />
@@ -42,7 +42,7 @@ export function DeleteChallengeModal({
         </div>
         <div className="grid grid-cols-2 gap-x-2 mt-4">
           <Button
-            variant="tertiary"
+            variant="secondary"
             size="large"
             className="w-full"
             onClick={onClose}

@@ -25,20 +25,18 @@ export function ConfirmResetPasswordModal({
   };
   return (
     <Modal isOpen={isModalOpen}>
-      <div className="w-full h-full bg-modal-background  flex flex-row items-center justify-center">
-        <div className="p-4 bg-gray-800 rounded-3xl">
-          <div className="flex flex-row items-center justify-center w-[260px] h-[86px] mb-4 text-m_light text-white-0.9 text-center">
-            비밀번호 변경을 완료했어요.
-          </div>
-          <Button
-            variant="primary"
-            size="large"
-            className="w-full"
-            onClick={handleModalClose}
-          >
-            확인
-          </Button>
+      <div className="p-4 bg-gray-700 rounded-3xl">
+        <div className="flex flex-row items-center justify-center w-[260px] h-[86px] mb-4 text-m_light text-white-0.9 text-center">
+          비밀번호 변경을 완료했어요.
         </div>
+        <Button
+          variant="primary"
+          size="large"
+          className="w-full"
+          onClick={handleModalClose}
+        >
+          확인
+        </Button>
       </div>
     </Modal>
   );

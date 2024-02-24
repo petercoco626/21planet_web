@@ -14,7 +14,7 @@ export function IssueTempPasswordModal({
 }: IssueTempPasswordModalProps) {
   return (
     <Modal isOpen={isModalOpen}>
-      <div className="p-4 bg-gray-800 rounded-3xl">
+      <div className="p-4 bg-gray-700 rounded-3xl">
         <div className="py-4 min-h-[86px] w-[260px] box-border flex flex-row items-center justify-center mb-4">
           <div className="text-m_light text-white-0.9 text-center">
             {message}

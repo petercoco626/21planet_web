@@ -26,22 +26,20 @@ export function WithdrawalModal({
 
   return (
     <Modal isOpen={isModalOpen}>
-      <div className="w-full h-full bg-modal-background  flex flex-row items-center justify-center">
-        <div className="p-4 bg-gray-800 rounded-3xl">
-          <div className="text-m_light text-white-0.9 text-center py-4">
-            탈퇴했습니다
-            <br />
-            그동안 21planet과 함께해 주셔서 감사합니다.
-          </div>
-          <Button
-            variant="primary"
-            size="large"
-            className="w-full"
-            onClick={hanelWithdrawal}
-          >
-            확인
-          </Button>
+      <div className="p-4 bg-gray-700 rounded-3xl">
+        <div className="text-m_light text-white-0.9 text-center py-4">
+          탈퇴했습니다
+          <br />
+          그동안 21planet과 함께해 주셔서 감사합니다.
         </div>
+        <Button
+          variant="primary"
+          size="large"
+          className="w-full"
+          onClick={hanelWithdrawal}
+        >
+          확인
+        </Button>
       </div>
     </Modal>
   );

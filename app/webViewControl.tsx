@@ -1,6 +1,5 @@
 'use client';
 import { pathname } from '@/constants/path';
-import { useWebviewStore } from '@/stores/webview/webview.store';
 import { useRouter } from 'next/navigation';
 import { use, useEffect } from 'react';
 

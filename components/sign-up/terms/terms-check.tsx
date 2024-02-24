@@ -9,6 +9,7 @@ import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { setCookie } from '@/libs/cookie';
+import { useDebounce } from '@/hooks/use-debounce';
 
 export type TermsInfoType =
   | 'age'
@@ -97,7 +98,7 @@ export function TermsCheck() {
     );
   };
 
-  const handleStartServiceButtonClick = async () => {
+  const handleStartServiceButtonClick = useDebounce(async () => {
     if (!nickname || nickname.length === 0) {
       alert('닉네임이 제대로 입력되지 않았어요 !');
       return;
@@ -163,7 +164,7 @@ export function TermsCheck() {
         },
       }
     );
-  };
+  }, 300);
 
   return (
     <div className="w-full h-full flex flex-col justify-between ">

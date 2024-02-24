@@ -10,6 +10,7 @@ import { Toast } from '@/components/base/toast';
 import { useCreateChallenge } from '@/hooks/api/challenge';
 import clsx from 'clsx';
 import { isAxiosError } from 'axios';
+import { useDebounce } from '@/hooks/use-debounce';
 
 interface CreateChallengeFormValue {
   title: string;
@@ -37,32 +38,33 @@ export function CreateChallengeForm() {
 
   const currentTitle = watch('title');
 
-  const handleCreateChallengeButtonClick = ({
-    title,
-  }: CreateChallengeFormValue) => {
-    const replacedTitle = title.replaceAll('\n', ' ').trim();
+  const handleCreateChallengeButtonClick = useDebounce(
+    ({ title }: CreateChallengeFormValue) => {
+      const replacedTitle = title.replaceAll('\n', ' ').trim();
 
-    if (replacedTitle.length === 0) {
-      setLoginErrorMessage('목표를 적어주세요.');
-      handleToggleOn();
-      return;
-    }
-
-    createChallengeMutate(
-      { title: replacedTitle, type: 'COMMON' },
-      {
-        onSuccess: () => {
-          route.push(pathname.CHALLENGE);
-        },
-        onError: (error) => {
-          if (error.response?.data.message) {
-            setLoginErrorMessage(error.response?.data.message);
-            handleToggleOn();
-          }
-        },
+      if (replacedTitle.length === 0) {
+        setLoginErrorMessage('목표를 적어주세요.');
+        handleToggleOn();
+        return;
       }
-    );
-  };
+
+      createChallengeMutate(
+        { title: replacedTitle, type: 'COMMON' },
+        {
+          onSuccess: () => {
+            route.push(pathname.CHALLENGE);
+          },
+          onError: (error) => {
+            if (error.response?.data.message) {
+              setLoginErrorMessage(error.response?.data.message);
+              handleToggleOn();
+            }
+          },
+        }
+      );
+    },
+    300
+  );
 
   const onCreateChallengeError = (
     error: FieldErrors<CreateChallengeFormValue>

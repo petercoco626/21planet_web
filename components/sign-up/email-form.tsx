@@ -8,6 +8,7 @@ import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
 import { useCheckEmailDuplication } from '@/hooks/api/auth';
 import { Toast } from '../base/toast';
 import { useToggle } from '@/hooks/use-toggle';
+import { useDebounce } from '@/hooks/use-debounce';
 
 interface EmailFormValue {
   email: string;
@@ -39,7 +40,7 @@ export function EmailForm() {
 
   const { handleSubmit } = EmailFormMethods;
 
-  const handleNextButtonClick = ({ email }: EmailFormValue) => {
+  const handleNextButtonClick = useDebounce(({ email }: EmailFormValue) => {
     checkEmailDuplicationMutate(
       { email },
       {
@@ -53,7 +54,7 @@ export function EmailForm() {
         },
       }
     );
-  };
+  }, 300);
 
   return (
     <FormProvider {...EmailFormMethods}>

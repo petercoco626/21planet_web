@@ -1,4 +1,4 @@
-import { Start21Planet } from '@/components/work-through/Start21Planet';
+import { Start21Planet } from '@/components/work-through/start-21-planet';
 
 export default function Home() {
   return (

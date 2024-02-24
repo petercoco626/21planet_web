@@ -4,7 +4,7 @@ import Slider, { Settings } from 'react-slick';
 import { useState } from 'react';
 import clsx from 'clsx';
 
-export function Carousel() {
+export function IntroductServiceImageCarousel() {
   const [currentSlideIdx, setCurrentSlideIdx] = useState(0);
 
   const settings: Settings = {

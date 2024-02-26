@@ -1,21 +1,21 @@
-export type BadgeType = 'COMMON';
+import { Challenge } from './challenge';
 
-export type BadgeSerialType = `BADGE_${BadgeType}_#${number}`;
+export type BadgeType = `COMMON_${number}`;
 
-export type TakeBadgeRequest = {
-  challengeId: string;
-};
-
-export type FetchBadgesType = {
-  title: string;
-  serial: number;
-  badgeType: BadgeType;
-  description: string;
-  imageUrl: string;
+export type BadgeCountInfo = {
+  type: BadgeType;
   count: number;
+  imageUrl: string;
+  title: string;
 };
 
-export type BadgeListResponse = {
-  totalCount: number;
-  results: FetchBadgesType[];
+export type FetchBadgeCountsResponse = {
+  data: BadgeCountInfo[];
+  sucess: boolean;
+};
+
+export type FetchBadgeHistoriesResponse = {
+  badgeImageUrl: string;
+  title: string;
+  challenges: Challenge[];
 };

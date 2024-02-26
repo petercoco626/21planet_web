@@ -1,15 +1,22 @@
-import { fetchBadgeList, takeBadge } from '@/service/badge';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import {
+  fetchBadgeCountsByBadgeType,
+  fetchBadgeHistories,
+} from '@/service/badge';
+import { BadgeType } from '@/types/api/badge';
+import { useQuery } from '@tanstack/react-query';
 
-export const useTakeBadge = () => {
-  return useMutation({
-    mutationFn: takeBadge,
+export const useBadgeHistories = (badgeType: BadgeType) => {
+  return useQuery({
+    queryFn: () => fetchBadgeHistories({ badgeType }),
+    queryKey: ['badges', 'histories', badgeType],
+    staleTime: Infinity,
   });
 };
-export const useBadge = () => {
+
+export const useBadgeCounts = () => {
   return useQuery({
-    queryFn: fetchBadgeList,
-    queryKey: ['badges'],
+    queryFn: fetchBadgeCountsByBadgeType,
+    queryKey: ['badges', 'counts'],
     staleTime: Infinity,
   });
 };

@@ -1,14 +1,25 @@
 import { client } from '.';
-import { BadgeListResponse } from '@/types/api/badge';
+import {
+  BadgeType,
+  FetchBadgeCountsResponse,
+  FetchBadgeHistoriesResponse,
+} from '@/types/api/badge';
 
-export const takeBadge = async () => {
-  const { status } = await client().post('/badges');
+export const fetchBadgeCountsByBadgeType = async () => {
+  const { data } = await client().get<FetchBadgeCountsResponse>(
+    '/badges/counts'
+  );
 
-  return { status };
+  return data;
 };
-
-export const fetchBadgeList = async () => {
-  const { data } = await client().get<BadgeListResponse>('/badges');
+export const fetchBadgeHistories = async ({
+  badgeType,
+}: {
+  badgeType: BadgeType;
+}) => {
+  const { data } = await client().get<FetchBadgeHistoriesResponse>(
+    `/badges/${badgeType}/histories`
+  );
 
   return data;
 };

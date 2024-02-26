@@ -1,5 +1,5 @@
-import { BadgeList } from '@/components/badge/badge-list';
-import { BadgeHeader } from '@/components/badge/header';
+import { BadgeList } from '@/components/badge/badge-list/badge-list';
+import { BadgeHeader } from '@/components/badge/badge-list/header';
 import { BottomNavigation } from '@/components/common/bottom-navigation';
 
 export default function BadgePage() {

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { pathname } from '@/constants/path';
 import { CheckedChallengeDateInfoModal } from './checked-challenge-date-info-modal';
 import { useToggle } from '@/hooks/use-toggle';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface ChallengeDateCardProps {
   checkedChallenge: ChallengeCheck | null;
@@ -20,6 +21,8 @@ export function ChallengeDateCard({
   challengeId,
   sequence,
 }: ChallengeDateCardProps) {
+  const queryClient = useQueryClient();
+
   const route = useRouter();
 
   const { toggle, handleToggleOn, handleToggleOff } = useToggle();
@@ -33,7 +36,13 @@ export function ChallengeDateCard({
 
   const handleCheckToday = async () => {
     await checkChallengeSequenceMutate(undefined, {
-      onSuccess: handleToggleOn,
+      onSuccess: () => {
+        handleToggleOn();
+        if (sequence === 21)
+          queryClient.refetchQueries({
+            queryKey: ['badges', 'counts'],
+          });
+      },
     });
   };
 

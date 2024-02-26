@@ -34,11 +34,12 @@ export function ChallengeDataCardList({
         {challengeCheckList.data.map((checkList, index) => (
           <ChallengeDateCard
             checkedChallenge={checkList}
-            canCheckToday={canCheckDateOnChallenge(
-              checkedDateList.length,
-              index,
-              lastChekcedDate
-            )}
+            // canCheckToday={canCheckDateOnChallenge(
+            //   checkedDateList.length,
+            //   index,
+            //   lastChekcedDate
+            // )}
+            canCheckToday
             sequence={index + 1}
             challengeId={challengeId}
             key={index}

@@ -7,7 +7,8 @@ export const client = () => {
   const instance = axios.create({
     baseURL: isProductionEnv
       ? 'https://api-dev.21planet.world'
-      : 'https://api-dev.21planet.world', // 추후 빌드 환경 구분해야함.
+      : // : 'https://api-dev.21planet.world', // 추후 빌드 환경 구분해야함.
+        'http://localhost:8080', // 추후 빌드 환경 구분해야함.
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true,
   });

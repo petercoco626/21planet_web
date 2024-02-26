@@ -18,7 +18,7 @@ export const fetchBadgeHistories = async ({
   badgeType: BadgeType;
 }) => {
   const { data } = await client().get<FetchBadgeHistoriesResponse>(
-    `/badges//histories${badgeType}`
+    `/badges/histories/${badgeType}`
   );
 
   return data;

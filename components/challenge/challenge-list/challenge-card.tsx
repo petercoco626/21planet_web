@@ -28,7 +28,9 @@ export const ChallengeCard = ({ challenge }: { challenge: Challenge }) => {
         />
         <div className="flex flex-col items-start">
           <span className="bg-gray-600 px-[6px] py-[2px] rounded-xl mb-1 text-white-0.9 text-xs_light">
-            {challenge.checkedDateListLength}일 째
+            {challenge.checkedDateListLength < 21
+              ? `${challenge.checkedDateListLength}일 째`
+              : '성공'}
           </span>
           <div className="text-white text-xl_extrabold mb-1">
             {challenge.title}

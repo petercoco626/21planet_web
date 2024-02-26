@@ -10,12 +10,17 @@ export type BadgeCountInfo = {
 };
 
 export type FetchBadgeCountsResponse = {
+  success: boolean;
   data: BadgeCountInfo[];
-  sucess: boolean;
 };
 
-export type FetchBadgeHistoriesResponse = {
+export type BadgeHistories = {
   badgeImageUrl: string;
   title: string;
   challenges: Challenge[];
+};
+
+export type FetchBadgeHistoriesResponse = {
+  success: boolean;
+  data: BadgeHistories;
 };

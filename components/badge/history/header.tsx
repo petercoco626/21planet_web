@@ -1,7 +1,7 @@
 import { GoBackButton } from '@/components/common/go-back-button';
 import IcExport from '@/assets/icon/ic-export.svg';
 
-export function BadgeDetailHeader() {
+export function BadgeHistoryHeader() {
   const handleExportButtonClick = () => {};
 
   return (

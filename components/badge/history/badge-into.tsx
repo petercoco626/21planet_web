@@ -1,5 +1,3 @@
-'use client';
-
 import { useBadgeHistories } from '@/hooks/api/badge';
 import { changeDateFormatYYMMDD } from '@/libs/utils';
 import { BadgeType } from '@/types/api/badge';

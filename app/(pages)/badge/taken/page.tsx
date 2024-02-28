@@ -2,6 +2,7 @@ import { TakenBadge } from '@/components/badge/taken/taken-badge';
 import IcX from '@/assets/icon/ic-X.svg';
 import Link from 'next/link';
 import { pathname } from '@/constants/path';
+import { Suspense } from 'react';
 
 export default function TakenBadgePage() {
   return (
@@ -21,7 +22,9 @@ export default function TakenBadgePage() {
           앞으로도 21planet과 함께 꾸준한 습관 형성을 해봐요.
         </p>
       </div>
-      <TakenBadge />
+      <Suspense>
+        <TakenBadge />
+      </Suspense>
     </main>
   );
 }

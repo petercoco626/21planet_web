@@ -37,11 +37,15 @@ export function ChallengeDateCard({
   const handleCheckToday = async () => {
     await checkChallengeSequenceMutate(undefined, {
       onSuccess: () => {
-        handleToggleOn();
-        if (sequence === 21)
+        if (sequence === 21) {
           queryClient.refetchQueries({
             queryKey: ['badges', 'counts'],
           });
+          queryClient.refetchQueries({
+            queryKey: ['challenge', challengeId, 'badge'],
+          });
+        }
+        handleToggleOn();
       },
     });
   };

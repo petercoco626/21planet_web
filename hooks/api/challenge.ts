@@ -5,9 +5,11 @@ import {
   fetchChallenge,
   fetchAllChallenge,
   fetchChallengeChecksOnChallengeId,
+  fetchBadgeOnChallengeId,
 } from '@/service/challenge';
 import { AxiosError, AxiosResponse } from 'axios';
 import {
+  BadgeByChallengeIdResponse,
   ChallengeChecksResponse,
   ChallengeListResponse,
   ChallengeResponse,
@@ -43,6 +45,14 @@ export const useChallengeChecksOnChallengeId = (challengeId: string) =>
     queryKey: ['challenge-checks', challengeId],
     queryFn: () => fetchChallengeChecksOnChallengeId(challengeId),
     staleTime: Infinity,
+  });
+
+export const useBadgeOnChallengeId = (challengeId: string, sequence: number) =>
+  useQuery<BadgeByChallengeIdResponse, AxiosError>({
+    queryKey: ['challenge', challengeId, 'badge'],
+    queryFn: () => fetchBadgeOnChallengeId(challengeId),
+    staleTime: Infinity,
+    enabled: sequence === 21,
   });
 
 export const useCreateChallenge = () => {

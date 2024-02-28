@@ -1,5 +1,6 @@
 import { client } from '.';
 import {
+  BadgeByChallengeIdResponse,
   ChallengeChecksResponse,
   ChallengeListResponse,
   ChallengeResponse,
@@ -27,6 +28,14 @@ export const fetchChallengeChecksOnChallengeId = async (
 ) => {
   const { data } = await client().get<ChallengeChecksResponse>(
     `${endPoint}/${challengeId}/checks`
+  );
+
+  return data;
+};
+
+export const fetchBadgeOnChallengeId = async (challengeId: string) => {
+  const { data } = await client().get<BadgeByChallengeIdResponse>(
+    `${endPoint}/${challengeId}/badge`
   );
 
   return data;

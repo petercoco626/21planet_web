@@ -24,3 +24,10 @@ export type FetchBadgeHistoriesResponse = {
   success: boolean;
   data: BadgeHistories;
 };
+
+export type Badge = {
+  id: string;
+  challengeId: string;
+  acquiredAt: Date;
+  type: BadgeType;
+};

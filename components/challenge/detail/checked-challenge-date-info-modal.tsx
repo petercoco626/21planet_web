@@ -1,6 +1,7 @@
 import { Button } from '@/components/base/button';
 import { Modal } from '@/components/base/modal';
 import { pathname } from '@/constants/path';
+import { useBadgeOnChallengeId } from '@/hooks/api/challenge';
 import { changeDateFormatYYMMDD } from '@/libs/utils';
 import { ChallengeCheck } from '@/types/api/challenge-check';
 import { useRouter } from 'next/navigation';
@@ -16,10 +17,22 @@ export function CheckedChallengeDateInfoModal({
   isModalOpen,
   checkedChallenge,
 }: CheckedChallengeDateInfoModalProps) {
+  const { data: badgeOnChallengeId } = useBadgeOnChallengeId(
+    checkedChallenge.challengeId,
+    checkedChallenge.sequence
+  );
+
   const route = useRouter();
 
   const handleRouteCommentPageButtonClick = () => {
     route.push(pathname.COMMENT_CHALLENGE + `/${checkedChallenge.challengeId}`);
+  };
+
+  const handleRouteTakenBadgePageButtonClick = () => {
+    route.push(
+      pathname.BADGE_TAKEN +
+        `?type=${badgeOnChallengeId?.data.type}&challengeId=${checkedChallenge.challengeId}`
+    );
   };
 
   return (
@@ -42,24 +55,36 @@ export function CheckedChallengeDateInfoModal({
         <div className="mb-4 text-s_thin text-white-0.3">
           {changeDateFormatYYMMDD(new Date(checkedChallenge.checkedAt))}
         </div>
-        <div className="grid grid-cols-2 gap-2 w-full">
-          <Button
-            variant="secondary"
-            size="large"
-            className="w-full"
-            onClick={onClose}
-          >
-            닫기
-          </Button>
+        {checkedChallenge.sequence < 21 && (
+          <div className="grid grid-cols-2 gap-2 w-full">
+            <Button
+              variant="secondary"
+              size="large"
+              className="w-full"
+              onClick={onClose}
+            >
+              닫기
+            </Button>
+            <Button
+              variant="primary"
+              size="large"
+              className="w-full"
+              onClick={handleRouteCommentPageButtonClick}
+            >
+              일지 쓰기
+            </Button>
+          </div>
+        )}
+        {checkedChallenge.sequence === 21 && (
           <Button
             variant="primary"
             size="large"
             className="w-full"
-            onClick={handleRouteCommentPageButtonClick}
+            onClick={handleRouteTakenBadgePageButtonClick}
           >
-            일지 쓰기
+            목표 달성 성공!
           </Button>
-        </div>
+        )}
       </div>
     </Modal>
   );

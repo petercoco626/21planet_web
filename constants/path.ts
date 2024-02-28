@@ -7,6 +7,7 @@ export const pathname = {
   FORGET_PASSWORD: '/forget-password',
   BADGE: '/badge',
   BADGE_HISTORY: '/badge/history',
+  BADGE_TAKEN: '/badge/taken',
   COMMENT_CHALLENGE: '/challenge/comment',
   CREATE_CHALLENGE: '/challenge/create',
   DETAIL_CAHLLENGE: '/challenge/detail',

@@ -6,9 +6,7 @@ import {
 } from '@/types/api/badge';
 
 export const fetchBadgeCountsByBadgeType = async () => {
-  const { data } = await client().get<FetchBadgeCountsResponse>(
-    '/badges/counts'
-  );
+  const { data } = await client().get<FetchBadgeCountsResponse>('/badges');
 
   return data;
 };

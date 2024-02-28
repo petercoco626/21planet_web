@@ -1,3 +1,4 @@
+import { Badge } from './badge';
 import { ChallengeCheck } from './challenge-check';
 
 export type ChallengeType = 'COMMON';
@@ -35,4 +36,9 @@ export type ChallengeResponse = {
 export type ChallengeChecksResponse = {
   success: boolean;
   data: ChallengeCheck[];
+};
+
+export type BadgeByChallengeIdResponse = {
+  success: boolean;
+  data: Badge;
 };

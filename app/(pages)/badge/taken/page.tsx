@@ -11,7 +11,7 @@ export default function TakenBadgePage() {
           <IcX />
         </Link>
       </div>
-      <div className="mt-8 mb-6">
+      <div className="mt-8 mb-6 text-center">
         <h2 className="text-xxl_light text-white-0.7 mb-2">
           목표 달성을 축하드려요!
         </h2>

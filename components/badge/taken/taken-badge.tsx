@@ -70,7 +70,13 @@ function BadgeInfo({
 
 function ChallengeInfo({ challengeInfo }: { challengeInfo: Challenge }) {
   return (
-    <div className="space-y-2 text-center mb-8 mt-6">
+    <div
+      className="border-[1px] border-white-0.15 space-y-2 text-center mb-8 mt-6 w-[276px] p-6 box-border rounded-xl mx-auto"
+      style={{
+        background:
+          'linear-gradient(115deg,rgba(122,115,153,0.6) 0%, rgba(50,46,77,0.0) 98.94%)',
+      }}
+    >
       <div className="text-s_medium text-white-0.5 ">달성한 목표</div>
       <div className="text-s_medium text-white-0.9">{challengeInfo.title}</div>
       <div className="text-s_thin text-white-0.5">

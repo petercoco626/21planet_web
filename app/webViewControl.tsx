@@ -7,8 +7,10 @@ export function WebViewControl() {
   const route = useRouter();
 
   useEffect(() => {
-    if (!window.isRNView) {
-      route.replace(pathname.LOGIN);
+    if (typeof window !== 'undefined') {
+      if (!window.isRNView) {
+        route.replace(pathname.LOGIN);
+      }
     }
   }, []);
 

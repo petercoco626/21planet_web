@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Toast } from '../../base/toast';
 import { GradientButton } from '../../base/gradient-button';
-import { TermscheckForm } from './terms-check-form';
+import { TermsCheckForm } from './terms-check-form';
 import { useSignUpActions } from '@/stores/sign-up/sign-up.store';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
@@ -24,7 +24,7 @@ export type TermsInfo = {
   isChecked: boolean;
 };
 
-const termsInfoDefalut: TermsInfo[] = [
+const termsInfoDefault: TermsInfo[] = [
   {
     type: 'age',
     text: '(필수) 만 14세 이상입니다.',
@@ -57,9 +57,6 @@ export function TermsCheck() {
 
   const queryClient = useQueryClient();
 
-  const setCurrentSignUpProcessType =
-    useSignUpActions().setCurrentSignUpProcessType;
-
   const { toggle, handleToggleOff, handleToggleOn } = useToggle();
 
   const { mutateAsync: signUpMutate } = useSignUp();
@@ -70,7 +67,7 @@ export function TermsCheck() {
 
   const password = queryClient.getQueryData<string>(['sign-up', 'password']);
 
-  const [termsInfo, setTermsInfo] = useState(termsInfoDefalut);
+  const [termsInfo, setTermsInfo] = useState(termsInfoDefault);
 
   const handleCheckTerm = (termsType: TermsInfoType) => {
     setTermsInfo(
@@ -88,6 +85,21 @@ export function TermsCheck() {
 
   const handleCheckAllTerm = () => {
     //TODO : 현재 all 상태가 뭔지 필요.
+    const isTermAllChecked =
+      termsInfo.filter((terms) => terms.isChecked === true).length === 5;
+
+    if (isTermAllChecked) {
+      setTermsInfo(
+        termsInfo.map((termsInfo) => {
+          return {
+            ...termsInfo,
+            isChecked: false,
+          };
+        })
+      );
+      return;
+    }
+
     setTermsInfo(
       termsInfo.map((termsInfo) => {
         return {
@@ -172,27 +184,26 @@ export function TermsCheck() {
         <h1 className="text-xxl_light text-white-0.9 mb-8">
           약관만 동의하면 끝이에요!
         </h1>
-        <TermscheckForm
+        <TermsCheckForm
           onCheckTerms={handleCheckTerm}
           onCheckAllTerms={handleCheckAllTerm}
           termsInfo={termsInfo}
         />
       </div>
-      <div className="px-6">
-        <Toast
-          message={'필수 약관을 동의해 주세요'}
-          classname="mb-6"
-          isToastOn={toggle}
-          onToastOff={handleToggleOff}
-        />
-        <GradientButton
-          size="large"
-          variant="gradient"
-          onClick={handleStartServiceButtonClick}
-        >
-          다 했어요!
-        </GradientButton>
-      </div>
+      <Toast
+        message={'필수 약관을 동의해 주세요'}
+        classname="mb-6"
+        isToastOn={toggle}
+        onToastOff={handleToggleOff}
+      />
+      <GradientButton
+        size="large"
+        variant="gradient"
+        className="w-full"
+        onClick={handleStartServiceButtonClick}
+      >
+        다 했어요!
+      </GradientButton>
     </div>
   );
 }

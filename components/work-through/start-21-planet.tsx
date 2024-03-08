@@ -23,7 +23,7 @@ export function Start21Planet() {
       <GradientButton
         variant="gradient"
         size="large"
-        className="w-full mt-9"
+        className="w-full mt-9 mb-1"
         onClick={handle21PlanetStartButtonClick}
       >
         시작하기

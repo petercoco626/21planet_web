@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { refreshAccessToken } from './service/auth';
+import { apiServerHost } from './libs/config';
 
 export default async function middleware(req: NextRequest) {
   const res = NextResponse.next();
@@ -9,7 +10,7 @@ export default async function middleware(req: NextRequest) {
   const accessToken = req.cookies.get('21-pl-ac')?.value;
 
   const { status: fetchProfileStatus } = await fetch(
-    'https://api-dev.21planet.world/auth/me',
+    apiServerHost + '/auth/me',
     {
       method: 'GET',
       headers: {

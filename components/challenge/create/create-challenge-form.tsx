@@ -107,6 +107,7 @@ export function CreateChallengeForm() {
               message: `${maxTitleLength}자 이하로 작성해주세요!`,
             },
           })}
+          autoFocus
         />
         <div className="flex flex-col items-center">
           <Toast

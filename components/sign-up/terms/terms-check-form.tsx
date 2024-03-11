@@ -8,7 +8,7 @@ import { TermNotionModal } from '@/components/setting/term-notion-modal';
 import { useToggle } from '@/hooks/use-toggle';
 import { termNotionIdInfo } from '@/constants/term-notion';
 
-export function TermscheckForm({
+export function TermsCheckForm({
   termsInfo,
   onCheckTerms,
   onCheckAllTerms,
@@ -17,6 +17,9 @@ export function TermscheckForm({
   onCheckTerms: (termsType: TermsInfoType) => void;
   onCheckAllTerms: () => void;
 }) {
+  const isTermAllChecked =
+    termsInfo.filter((terms) => terms.isChecked === true).length === 5;
+
   return (
     <div>
       <div className="flex gap-x-2 items-center">
@@ -25,12 +28,7 @@ export function TermscheckForm({
           onClick={onCheckAllTerms}
           className="w-8 h-8 flex items-center justify-center"
         >
-          {termsInfo.filter((terms) => terms.isChecked === true).length ===
-          5 ? (
-            <IcCheckCircle />
-          ) : (
-            <IcCheckCircleOff />
-          )}
+          {isTermAllChecked ? <IcCheckCircle /> : <IcCheckCircleOff />}
         </button>
         <div className="text-m_medium text-white-0.9">약관에 모두 동의</div>
       </div>
@@ -74,6 +72,8 @@ function TermInfo({
           className="w-8 h-8 flex items-center justify-center"
         >
           <IcCheck
+            width={16}
+            height={16}
             className={clsx(
               terms.isChecked ? 'stroke-white-0.9' : 'stroke-white-0.15'
             )}

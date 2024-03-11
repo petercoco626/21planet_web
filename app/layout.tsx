@@ -33,7 +33,7 @@ export default function RootLayout({
           <div className="w-full h-full  max-w-[500px] mx-auto relative">
             {children}
             <BackgroundLayout />
-            <WebViewControl />
+            {/* <WebViewControl /> */}
           </div>
         </ClientLayout>
         <div id="modal-root" />

@@ -146,7 +146,7 @@ export function Input<T>(props: InputProps<T>) {
       {error && (
         <div className="pl-2 flex gap-x-1 flex-row items-center mt-[2px]">
           <IcWarning />
-          <p className="text-xs_regular text-red-1">{error.message}</p>
+          <p className="text-xs_light text-red-1">{error.message}</p>
         </div>
       )}
     </div>

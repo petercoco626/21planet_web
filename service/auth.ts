@@ -10,6 +10,7 @@ import {
   SignInResponse,
   SignUpRequest,
 } from '@/types/api/auth';
+import { apiServerHost } from '@/libs/config';
 
 export const checkEmailDuplication = async (
   body: CheckEmailDuplicationRequest
@@ -95,7 +96,7 @@ export const disagreePersonalForMarketingTerm = async () => {
 };
 
 export const refreshAccessToken = async (refreshToken: string) => {
-  const response = await fetch('https://api-dev.21planet.world/auth/refresh', {
+  const response = await fetch(apiServerHost + '/auth/refresh', {
     method: 'POST',
     body: JSON.stringify({ refresh: refreshToken }),
     headers: { 'Content-Type': 'application/json' },

@@ -3,6 +3,7 @@ import './globals.css';
 import { ClientLayout } from './client-layout';
 import { BackgroundLayout } from './(pages)/background-layout';
 import { WebViewControl } from './webViewControl';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,6 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-VK2931MXB6');
+        `}
+      </Script>
       <body
         className="w-screen h-screen font-SUIT"
         style={{

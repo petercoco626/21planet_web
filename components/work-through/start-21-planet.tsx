@@ -4,7 +4,17 @@ import { useRouter } from 'next/navigation';
 import { GradientButton } from '../base/gradient-button';
 import { Button } from '../base/button';
 import { pathname } from '@/constants/path';
-import { IntroductServiceImageCarousel } from './introduct-service-image-carousel';
+import dynamic from 'next/dynamic';
+
+const IntroductServiceImageCarousel = dynamic(
+  () =>
+    import('./introduct-service-image-carousel').then(
+      (mod) => mod.IntroductServiceImageCarousel
+    ),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
 
 export function Start21Planet() {
   const route = useRouter();

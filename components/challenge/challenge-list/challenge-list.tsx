@@ -3,7 +3,14 @@
 import { useChallengeList } from '@/hooks/api/challenge';
 import { NoChallengeData } from './no-challenge-data';
 import { ChallengeCard } from './challenge-card';
-import { Loading } from '@/components/base/loading';
+import dynamic from 'next/dynamic';
+
+const Loading = dynamic(
+  () => import('@/components/base/loading').then((mod) => mod.Loading),
+  {
+    loading: () => <div className="text-white">Loading...</div>,
+  }
+);
 
 export function ChallengeList() {
   const { data: challengeList, isLoading } = useChallengeList();
